@@ -2,6 +2,47 @@ import { combineReducers } from 'redux'
 
 import C from './constants'
 
+export const auth = (state = {
+  isFetching: false,
+  isAuthenticated: localStorage.getItem('token') === false
+}, action) => {
+  switch (action.type) {
+    case C.LOGIN_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false,
+        error: null,
+        user: action.user
+      })
+
+    case C.LOGIN_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        user: null,
+        error: action.error
+      })
+
+    case C.LOGIN_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: true,
+        user: action.user
+      })
+
+    case C.LOGOUT_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        isAuthenticated: false,
+        error: null,
+        user: null
+      })
+
+    default:
+      return state
+  }
+}
+
 export const errors = (state = null, action) => {
   switch (action.type) {
     case C.ADD_ERROR:
@@ -18,5 +59,6 @@ export const errors = (state = null, action) => {
 }
 
 export default combineReducers({
+  auth,
   errors
 })

@@ -16,7 +16,8 @@ module.exports = {
     }),
     new extractTextPlugin('bundle.css'),
     new dotenvWebpack({
-      path: paths.app + '/.env'
+      path: paths.app + '/.env',
+      systemvars: true
     }),
   ],
   module: {

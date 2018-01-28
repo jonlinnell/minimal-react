@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/webpack --config config/webpack.prod.config.js",
     "lint": "./node_modules/.bin/eslint --ext '.js','.jsx' src/",
     "precommit": "yarn test",
-    "start": "./node_modules/.bin/webpack-dev-server --open --config config/webpack.dev.config.js",
+    "start": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server --open --config config/webpack.dev.config.js",
     "test": "yarn lint"
   },
   "repository": {
@@ -47,6 +47,7 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "bluebird": "^3.0.0",
     "bootstrap": "^4.0.0-beta.3",
     "font-awesome": "^4.7.0",
@@ -55,6 +56,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   }
 }
