@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 
 import C from './constants'
 
@@ -28,6 +29,12 @@ export const auth = (state = {
         isFetching: false,
         isAuthenticated: true,
         user: action.user
+      })
+
+    case C.SESSION_FETCHING:
+      return Object.assign({}, state, {
+        isFetching: true,
+        isAuthenticated: false
       })
 
     case C.LOGOUT_SUCCESS:
@@ -60,5 +67,6 @@ export const errors = (state = null, action) => {
 
 export default combineReducers({
   auth,
-  errors
+  errors,
+  form: formReducer
 })

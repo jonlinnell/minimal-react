@@ -3,6 +3,7 @@ import axios from 'axios'
 import C from './constants'
 
 import hostResolver from '../lib/hostResolver'
+import authHeader from '../lib/authHeader'
 
 const host = hostResolver()
 
@@ -36,6 +37,18 @@ export const loginFailure = error => ({
 export const logoutRequest = () => ({ type: C.LOGOUT_REQUEST })
 export const logoutSuccess = () => ({ type: C.LOGOUT_SUCCESS })
 export const logoutFailure = () => ({ type: C.LOGOUT_FAILURE })
+
+export const sessionResume = () => (dispatch) => {
+  dispatch({ type: C.SESSION_FETCHING })
+
+  axios({
+    mathod: 'POST',
+    headers: authHeader(),
+    url: `${host}/auth/me`
+  })
+    .then(response => dispatch(loginSuccess(response.data.username)))
+    .catch(error => dispatch(loginFailure(error.response.data.message)))
+}
 
 export const login = credentials => (dispatch) => {
   dispatch(loginRequest(credentials.username))
