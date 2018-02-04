@@ -84,5 +84,8 @@ export const loadURLs = () => (dispatch) => {
       type: C.URLS_COMPLETE,
       payload: response.data
     }))
-    .catch(error => dispatch(addError(error.response.data.message)))
+    .catch((error) => {
+      dispatch(addError(error.response.data.message))
+      dispatch({ type: C.URLS_CANCEL })
+    })
 }

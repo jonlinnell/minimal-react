@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+
+import Spinner from '../misc/Spinner'
+
 import URLRecord from '../containers/URLRecord'
 
 class URLs extends Component {
@@ -9,10 +12,8 @@ class URLs extends Component {
   render() {
     return (
       <div className='container container-fluid'>
-        {this.props.data.isFetching
-          ? <p>Loading</p>
-          : this.props.data.urls.map(record => <URLRecord url={record} key={record.id} />)
-        }
+        <Spinner enabled={this.props.data.isFetching} />
+        {this.props.data.urls.map(record => <URLRecord url={record} key={record.id} />)}
       </div>
     )
   }
