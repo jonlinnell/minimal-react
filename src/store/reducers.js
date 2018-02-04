@@ -50,6 +50,29 @@ export const auth = (state = {
   }
 }
 
+export const urls = (state = null, action) => {
+  switch (action.type) {
+    case C.URLS_FETCHING:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+
+    case C.URLS_COMPLETE:
+      return Object.assign({}, state, {
+        isFetching: false,
+        urls: action.payload
+      })
+
+    case C.URLS_CANCEL:
+      return Object.assign({}, state, {
+        isFetching: false
+      })
+
+    default:
+      return state
+  }
+}
+
 export const errors = (state = null, action) => {
   switch (action.type) {
     case C.ADD_ERROR:
@@ -67,6 +90,9 @@ export const errors = (state = null, action) => {
 
 export default combineReducers({
   auth,
+  data: combineReducers({
+    urls
+  }),
   errors,
   form: formReducer
 })

@@ -5,11 +5,7 @@ import PrivateRoute from '../misc/PrivateRoute'
 
 import Navbar from '../containers/Navbar'
 import Login from '../containers/Login'
-
-const TestPrivateComponent = () =>
-  <div>
-    <p>This is a test private route. Looks like you're logged in!</p>
-  </div>
+import URLs from '../containers/URLs'
 
 const Home = () =>
   <div>
@@ -28,7 +24,7 @@ class App extends Component {
 
           <Route exact path='/' component={Home} />
           <Route path='/login' component={Login} />
-          <PrivateRoute path='/statistics' component={ TestPrivateComponent } />
+          <PrivateRoute path='/urls' component={URLs} />
         </div>
       </Router>
     )

@@ -71,3 +71,18 @@ export const logout = () => (dispatch) => {
     ? dispatch(logoutFailure())
     : dispatch(logoutSuccess())
 }
+
+export const loadURLs = () => (dispatch) => {
+  dispatch({ type: C.URLS_FETCHING })
+
+  axios({
+    method: 'GET',
+    url: `${host}/url`,
+    headers: authHeader()
+  })
+    .then(response => dispatch({
+      type: C.URLS_COMPLETE,
+      payload: response.data
+    }))
+    .catch(error => dispatch(addError(error.response.data.message)))
+}
