@@ -14,8 +14,8 @@ class Links extends Component {
       <div className='container card card-body my-3'>
         <h3>Links</h3>
         <p className='lead'>All links currently registered.</p>
+        <Spinner enabled={this.props.data.isFetching} />
         <ul className='list-group list-group-flush col-sm-12 p-0'>
-          <Spinner enabled={this.props.data.isFetching} />
           {this.props.data.urls.map(record => <URLRecord url={record} key={record.id} />)}
         </ul>
       </div>

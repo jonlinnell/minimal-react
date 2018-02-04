@@ -1,5 +1,9 @@
 /* Styles */
 
+.link-action {
+  font-size: 0.8rem;
+}
+
 a.url {
   white-space: nowrap;
   overflow: hidden;

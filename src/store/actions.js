@@ -89,3 +89,22 @@ export const loadURLs = () => (dispatch) => {
       dispatch({ type: C.URLS_CANCEL })
     })
 }
+
+export const modifyURL = url => (dispatch) => {
+  dispatch({ type: C.MODIFY_URL, payload: url.id })
+
+  axios({
+    method: 'PUT',
+    url: `${host}/url/${url.id}`,
+    headers: authHeader(),
+    data: { title: url.title, url: url.url }
+  })
+    .then(() => {
+      dispatch({ type: C.MODIFY_URL_COMPLETE })
+      dispatch(loadURLs())
+    })
+    .catch((error) => {
+      dispatch(addError(error.response.data.message))
+      dispatch({ type: C.MODIFY_URL_COMPLETE })
+    })
+}
