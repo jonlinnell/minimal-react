@@ -1,29 +1,38 @@
 import React, { Component } from 'react'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { LinkContainer } from 'react-router-bootstrap'
+
+import {
+  faLink,
+  faChartLine,
+  faCog,
+  faSignInAlt as faSignIn,
+  faSignOutAlt as faSignOut
+} from '@fortawesome/fontawesome-free-solid'
 
 class Navbar extends Component {
   render() {
     const navbarItemsAuthenticated = [
-      <LinkContainer to='/urls' key='links'>
+      <LinkContainer to='/links' key='links'>
         <button type='button' className='btn btn-secondary'>
-          <i className="fa fa-link mr-2" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={ faLink } className='mr-2' />
           Links
         </button>
       </LinkContainer>,
       <LinkContainer to='/statistics' key='statistics'>
         <button type='button' className='btn btn-secondary'>
-          <i className="fa fa-line-chart mr-2" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={ faChartLine } className='mr-2' />
           Statistics
         </button>
       </LinkContainer>,
       <LinkContainer to='/settings' key='settings'>
         <button type='button' className='btn btn-secondary'>
-          <i className="fa fa-cog mr-2" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={ faCog } className='mr-2' />
           Settings
         </button>
       </LinkContainer>,
       <button type='button' className='btn btn-secondary' key='logout' onClick={this.props.onLogout} href='logout'>
-        <i className="fa fa-sign-out mr-2" aria-hidden="true"></i>
+        <FontAwesomeIcon icon={ faSignOut } className='mr-2' />
         Logout ({this.props.auth.user})
       </button>
     ]
@@ -31,13 +40,13 @@ class Navbar extends Component {
     const navbarItemsUnauthenticated = [
       <LinkContainer to='/login' key='login'>
         <button type='button' className='btn btn-secondary'>
-          <i className="fa fa-sign-in mr-2" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={ faSignIn } className='mr-2' />
           Login
         </button>
       </LinkContainer>,
       <LinkContainer to='/statistics' key='statistics'>
         <button type='button' className='btn btn-secondary'>
-          <i className="fa fa-line-chart mr-2" aria-hidden="true"></i>
+          <FontAwesomeIcon icon={ faChartLine } className='mr-2' />
           Statistics
         </button>
       </LinkContainer>

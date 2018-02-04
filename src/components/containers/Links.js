@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { loadURLs } from '../../store/actions'
 
-import URLs from '../ui/URLs'
+import Links from '../ui/Links'
 
 const mapStateToProps = state => ({
   data: state.data.urls
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(URLs)
+export default connect(mapStateToProps, mapDispatchToProps)(Links)

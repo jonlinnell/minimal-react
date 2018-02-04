@@ -6,7 +6,7 @@ import PrivateRoute from '../misc/PrivateRoute'
 import Navbar from '../containers/Navbar'
 import ClientError from '../containers/ClientError'
 import Login from '../containers/Login'
-import URLs from '../containers/URLs'
+import Links from '../containers/Links'
 
 const Home = () =>
   <div>
@@ -25,7 +25,7 @@ class App extends Component {
 
           <Route exact path='/' component={Home} />
           <Route path='/login' component={Login} />
-          <PrivateRoute path='/urls' component={URLs} />
+          <PrivateRoute path='/links' component={Links} />
         </div>
       </Router>
     )

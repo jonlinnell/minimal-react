@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/fontawesome-free-solid'
-
-class URLRecord extends Component {
+class LinkRecord extends Component {
   render() {
     return (
-      <div className='row d-flex align-items-center my-2'>
-        <p className='h3 m-0'>{this.props.url.title}</p>
-        <FontAwesomeIcon icon={ faArrowRight } size='lg' className='mx-2'></FontAwesomeIcon>
-        <p className='h3 m-0'><em>{this.props.url.url}</em></p>
-      </div>
+      <li className='row list-group-item d-flex align-items-center justify-content-start'>
+        <p className='col-sm-4 h4 m-0'>{this.props.url.title}</p>
+        <a
+          className='col-sm-8 h4 m-0 text-secondary url'
+          href={this.props.url.url}
+          title={this.props.url.url}
+          target='_blank'
+        >
+          <em>{this.props.url.url}</em>
+        </a>
+      </li>
     )
   }
 }
 
-export default URLRecord
+export default LinkRecord
