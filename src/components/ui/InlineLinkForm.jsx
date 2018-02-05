@@ -16,7 +16,7 @@ let LinkForm = (props) => {
         <Field className='form-control col-sm-4 p-2' component='input' type='text' name='title'></Field>
         <Field className='form-control col-sm-8 p-2' component='input' type='text' name='url'></Field>
       </div>
-      <div className='w-100 d-flex justify-content-end mt-2'>
+      <div className='w-100 d-flex mt-2 justify-content-end'>
         <button
           type="submit"
           className="btn btn-sm btn-primary"
@@ -28,7 +28,7 @@ let LinkForm = (props) => {
           type="button"
           className="btn btn-sm btn-light"
           onClick={onCancel}
-          disabled={ submitting }
+          disabled={submitting}
         >
           Cancel
         </button>

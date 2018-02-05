@@ -1,16 +1,20 @@
 import { connect } from 'react-redux'
 
-import { loadURLs } from '../../store/actions'
+import { loadURLs, setAddingURL } from '../../store/actions'
 
 import Links from '../ui/Links'
 
 const mapStateToProps = state => ({
-  data: state.data.urls
+  data: state.data.urls,
+  activeUpdate: state.activeUpdate
 })
 
 const mapDispatchToProps = dispatch => ({
   loadURLs() {
     dispatch(loadURLs())
+  },
+  onSetAddingURL() {
+    dispatch(setAddingURL())
   }
 })
 

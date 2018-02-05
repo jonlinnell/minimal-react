@@ -73,32 +73,34 @@ export const urls = (state = null, action) => {
   }
 }
 
-export const updates = (state = null, action) => {
+export const activeUpdate = (state = null, action) => {
   switch (action.type) {
     case C.REMOTE_MODIFY_URL:
       return Object.assign({}, state, {
-        action: 'modify',
-        id: action.payload.id
+        isSubmitting: true
       })
 
     case C.REMOTE_MODIFY_URL_COMPLETE:
       return Object.assign({}, state, {
-        action: null,
-        id: null
+        isSubmitting: false
       })
 
-    default:
-      return state
-  }
-}
-
-export const modifying = (state = null, action) => {
-  switch (action.type) {
     case C.SELECT_CURRENTLY_MODIFYING:
-      return action.payload
+      return Object.assign({}, state, {
+        id: action.payload,
+        action: 'modifying'
+      })
 
-    case C.CLEAR_CURRENTLY_MODIFYING:
-      return null
+    case C.SET_CURRENTLY_ADDING:
+      return Object.assign({}, state, {
+        action: 'adding'
+      })
+
+    case C.CLEAR_ACTIVE_UPDATE:
+      return {
+        id: null,
+        action: null
+      }
 
     default:
       return state
@@ -121,12 +123,11 @@ export const errors = (state = null, action) => {
 }
 
 export default combineReducers({
+  activeUpdate,
   auth,
   data: combineReducers({
-    updates,
     urls
   }),
   errors,
-  form: formReducer,
-  modifying
+  form: formReducer
 })

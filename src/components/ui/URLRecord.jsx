@@ -8,7 +8,7 @@ class LinkRecord extends Component {
   render() {
     const { title, url, id } = this.props.url
 
-    return this.props.modifying === id
+    return this.props.activeUpdate.id === id
       ? <InlineLinkForm />
       : <li className='list-group-item'>
           <div className='row d-flex align-items-center justify-content-start'>

@@ -5,7 +5,7 @@ import { loadClicks, setModifyURL, clearModifyURL, remoteModifyURL } from '../..
 import URLRecord from '../ui/URLRecord'
 
 const mapStateToProps = state => ({
-  modifying: state.modifying
+  activeUpdate: state.activeUpdate
 })
 
 const mapDispatchToProps = dispatch => ({

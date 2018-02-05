@@ -95,7 +95,31 @@ export const setModifyURL = id => ({
   payload: id
 })
 
-export const clearModifyURL = () => ({ type: C.CLEAR_CURRENTLY_MODIFYING })
+export const setAddingURL = () => ({ type: C.SET_CURRENTLY_ADDING })
+
+export const clearModifyURL = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
+export const clearActiveUpdate = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
+
+export const remoteAddURL = newURL => (dispatch) => {
+  const { title, url } = newURL
+
+  dispatch({ type: C.REMOTE_ADD_URL })
+
+  axios({
+    method: 'POST',
+    url: `${host}/url/`,
+    headers: authHeader(),
+    data: { title, url }
+  })
+    .then(() => {
+      dispatch({ type: C.REMOTE_ADD_URL_COMPLETE })
+      dispatch(loadURLs())
+    })
+    .catch((error) => {
+      dispatch(addError(error.response.data.message))
+      dispatch({ type: C.REMOTE_ADD_URL_COMPLETE })
+    })
+}
 
 export const remoteModifyURL = updatedUrl => (dispatch) => {
   const { id, title, url } = updatedUrl
