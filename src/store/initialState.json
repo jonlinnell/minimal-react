@@ -6,7 +6,12 @@
     }
   },
   "activeUpdate": {
-    "id": null,
-    "isSubmitting": null
+    "add": null,
+    "modify": {
+      "id": null
+    },
+    "remove": {
+      "id": null
+    }
   }
 }

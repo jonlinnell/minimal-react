@@ -102,9 +102,9 @@ export const setDeletingURL = id => ({
   payload: id
 })
 
-export const clearModifyURL = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
+export const clearModifyURL = () => ({ type: C.CLEAR_CURRENTLY_MODIFYING })
 
-export const clearActiveUpdate = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
+export const clearActiveUpdate = () => ({ type: C.CLEAR_CURRENTLY_MODIFYING })
 
 export const remoteAddURL = newURL => (dispatch) => {
   const { title, url } = newURL
@@ -118,12 +118,12 @@ export const remoteAddURL = newURL => (dispatch) => {
     data: { title, url }
   })
     .then(() => {
-      dispatch({ type: C.REMOTE_ADD_URL_COMPLETE })
+      dispatch({ type: C.ADDING_COMPLETE })
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
-      dispatch({ type: C.REMOTE_ADD_URL_COMPLETE })
+      dispatch({ type: C.ADDING_COMPLETE })
     })
 }
 

@@ -8,7 +8,7 @@ class LinkRecord extends Component {
   render() {
     const { id, title, url } = this.props.url
 
-    return this.props.activeUpdate.id === id
+    return this.props.modify.id === id
       ? <InlineLinkFormUpdate />
       : <li className='list-group-item'>
           <div className='row d-flex align-items-center justify-content-start'>
@@ -33,7 +33,9 @@ class LinkRecord extends Component {
             <a className={linkActionClasses.join(' ')}>Stats</a>
             <a
               className={linkActionClasses.join(' ')}
-              onClick={() => this.props.onDeleteURL(id)}
+              onClick={() => this.props.onSelectDeleteURL(id)}
+              data-toggle='modal'
+              data-target='#confirmDelete'
               role='button'
             >
               Delete

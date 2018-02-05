@@ -4,6 +4,7 @@ import Spinner from '../misc/Spinner'
 
 import URLRecord from '../containers/URLRecord'
 import InlineLinkFormAdd from '../containers/InlineLinkFormAdd'
+import ModalConfirmDelete from '../containers/ModalConfirmDelete'
 
 class Links extends Component {
   componentDidMount() {
@@ -20,10 +21,13 @@ class Links extends Component {
         </div>
         <Spinner enabled={this.props.data.isFetching} />
         <ul className='list-group list-group-flush col-sm-12 p-0'>
-          {this.props.activeUpdate.action === 'adding'
+          {this.props.activeUpdate.add
             ? <InlineLinkFormAdd />
             : null}
           {this.props.data.urls.map(record => <URLRecord url={record} key={record.id} />)}
+          {this.props.activeUpdate.remove.id
+            ? <ModalConfirmDelete />
+            : null}
         </ul>
       </div>
     )

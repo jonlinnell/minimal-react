@@ -73,7 +73,20 @@ export const urls = (state = null, action) => {
   }
 }
 
-export const activeUpdate = (state = null, action) => {
+export const add = (state = null, action) => {
+  switch (action.type) {
+    case C.SET_CURRENTLY_ADDING:
+      return true
+
+    case C.ADDING_COMPLETE:
+      return false
+
+    default:
+      return state
+  }
+}
+
+export const modify = (state = null, action) => {
   switch (action.type) {
     case C.REMOTE_MODIFY_URL:
       return Object.assign({}, state, {
@@ -85,6 +98,23 @@ export const activeUpdate = (state = null, action) => {
         isSubmitting: false
       })
 
+    case C.SELECT_CURRENTLY_MODIFYING:
+      return Object.assign({}, state, {
+        id: action.payload
+      })
+
+    case C.CLEAR_CURRENTLY_MODIFYING:
+      return Object.assign({}, state, {
+        id: null
+      })
+
+    default:
+      return state
+  }
+}
+
+export const remove = (state = null, action) => {
+  switch (action.type) {
     case C.REMOTE_DELETE_URL:
       return Object.assign({}, state, {
         isSubmitting: true
@@ -92,25 +122,14 @@ export const activeUpdate = (state = null, action) => {
 
     case C.REMOTE_DELETE_URL_COMPLETE:
       return Object.assign({}, state, {
-        isSubmitting: false
+        isSubmitting: false,
+        id: null
       })
 
-    case C.SELECT_CURRENTLY_MODIFYING:
+    case C.SELECT_CURRENTLY_DELETING:
       return Object.assign({}, state, {
-        id: action.payload,
-        action: 'modifying'
+        id: action.payload
       })
-
-    case C.SET_CURRENTLY_ADDING:
-      return Object.assign({}, state, {
-        action: 'adding'
-      })
-
-    case C.CLEAR_ACTIVE_UPDATE:
-      return {
-        id: null,
-        action: null
-      }
 
     default:
       return state
@@ -133,7 +152,11 @@ export const errors = (state = null, action) => {
 }
 
 export default combineReducers({
-  activeUpdate,
+  activeUpdate: combineReducers({
+    add,
+    modify,
+    remove
+  }),
   auth,
   data: combineReducers({
     urls
