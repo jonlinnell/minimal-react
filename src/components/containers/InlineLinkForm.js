@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   callback(url) {
+    dispatch(clearModifyURL())
     dispatch(remoteModifyURL(url))
   },
 

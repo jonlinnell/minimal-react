@@ -10,7 +10,6 @@
     "import/no-named-default": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "jsx-a11y/no-onchange": off,
     "no-else-return": "off",
     "no-unused-expressions": ["error", {"allowTernary": true}],
     "semi": [2, "never"]
