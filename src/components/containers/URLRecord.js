@@ -1,6 +1,12 @@
 import { connect } from 'react-redux'
 
-import { loadClicks, setModifyURL, clearModifyURL, remoteModifyURL } from '../../store/actions'
+import {
+  loadClicks,
+  setModifyURL,
+  clearModifyURL,
+  remoteModifyURL,
+  remoteDeleteURL
+} from '../../store/actions'
 
 import URLRecord from '../ui/URLRecord'
 
@@ -23,6 +29,10 @@ const mapDispatchToProps = dispatch => ({
 
   onRemoteModifyURL(url) {
     dispatch(remoteModifyURL(url))
+  },
+
+  onDeleteURL(id) {
+    dispatch(remoteDeleteURL(id))
   }
 })
 

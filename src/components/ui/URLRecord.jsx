@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-import InlineLinkForm from '../containers/InlineLinkForm'
+import InlineLinkFormUpdate from '../containers/InlineLinkFormUpdate'
 
 const linkActionClasses = ['text-secondary', 'ml-2', 'font-weight-light', 'link-action']
 
 class LinkRecord extends Component {
   render() {
-    const { title, url, id } = this.props.url
+    const { id, title, url } = this.props.url
 
     return this.props.activeUpdate.id === id
-      ? <InlineLinkForm />
+      ? <InlineLinkFormUpdate />
       : <li className='list-group-item'>
           <div className='row d-flex align-items-center justify-content-start'>
             <p className='col-sm-4 h4 m-0 p-0'>{title}</p>
@@ -31,7 +31,13 @@ class LinkRecord extends Component {
               Modify
             </a>
             <a className={linkActionClasses.join(' ')}>Stats</a>
-            <a className={linkActionClasses.join(' ')}>Delete</a>
+            <a
+              className={linkActionClasses.join(' ')}
+              onClick={() => this.props.onDeleteURL(id)}
+              role='button'
+            >
+              Delete
+            </a>
           </div>
         </li>
   }

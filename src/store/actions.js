@@ -97,7 +97,13 @@ export const setModifyURL = id => ({
 
 export const setAddingURL = () => ({ type: C.SET_CURRENTLY_ADDING })
 
+export const setDeletingURL = id => ({
+  type: C.SELECT_CURRENTLY_DELETING,
+  payload: id
+})
+
 export const clearModifyURL = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
+
 export const clearActiveUpdate = () => ({ type: C.CLEAR_ACTIVE_UPDATE })
 
 export const remoteAddURL = newURL => (dispatch) => {
@@ -139,5 +145,23 @@ export const remoteModifyURL = updatedUrl => (dispatch) => {
     .catch((error) => {
       dispatch(addError(error.response.data.message))
       dispatch({ type: C.REMOTE_MODIFY_URL_COMPLETE })
+    })
+}
+
+export const remoteDeleteURL = id => (dispatch) => {
+  dispatch({ type: C.REMOTE_DELETE_URL })
+
+  axios({
+    method: 'DELETE',
+    url: `${host}/url/${id}`,
+    headers: authHeader()
+  })
+    .then(() => {
+      dispatch({ type: C.REMOTE_DELETE_URL_COMPLETE })
+      dispatch(loadURLs())
+    })
+    .catch((error) => {
+      dispatch(addError(error.response.data.message))
+      dispatch({ type: C.REMOTE_DELETE_URL_COMPLETE })
     })
 }

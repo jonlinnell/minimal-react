@@ -85,6 +85,16 @@ export const activeUpdate = (state = null, action) => {
         isSubmitting: false
       })
 
+    case C.REMOTE_DELETE_URL:
+      return Object.assign({}, state, {
+        isSubmitting: true
+      })
+
+    case C.REMOTE_DELETE_URL_COMPLETE:
+      return Object.assign({}, state, {
+        isSubmitting: false
+      })
+
     case C.SELECT_CURRENTLY_MODIFYING:
       return Object.assign({}, state, {
         id: action.payload,
