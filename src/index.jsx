@@ -7,7 +7,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 
 import storeCreator from './store'
-import { addError, login, logout, sessionResume, modifyURL } from './store/actions'
+import { addError, login, logout, sessionResume, remoteModifyURL } from './store/actions'
 
 import App from './components/containers/App'
 
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'development') {
   window.store = store
   window.login = login
   window.logout = logout
-  window.modifyURL = modifyURL
+  window.remoteModifyURL = remoteModifyURL
 }
 
 window.addEventListener('error', message => store.dispatch(addError(message)))

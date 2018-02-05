@@ -2,8 +2,7 @@
   parser: "babel-eslint",
   "extends": [
     "react-app",
-    "airbnb-base",
-    "plugin:jsx-a11y/recommended",
+    "airbnb-base"
   ],
   "rules": {
     "arrow-body-style": ["error", "as-needed"],

@@ -90,21 +90,30 @@ export const loadURLs = () => (dispatch) => {
     })
 }
 
-export const modifyURL = url => (dispatch) => {
-  dispatch({ type: C.MODIFY_URL, payload: url.id })
+export const setModifyURL = id => ({
+  type: C.SELECT_CURRENTLY_MODIFYING,
+  payload: id
+})
+
+export const clearModifyURL = () => ({ type: C.CLEAR_CURRENTLY_MODIFYING })
+
+export const remoteModifyURL = updatedUrl => (dispatch) => {
+  const { id, title, url } = updatedUrl
+
+  dispatch({ type: C.REMOTE_MODIFY_URL, payload: id })
 
   axios({
     method: 'PUT',
-    url: `${host}/url/${url.id}`,
+    url: `${host}/url/${id}`,
     headers: authHeader(),
-    data: { title: url.title, url: url.url }
+    data: { title, url }
   })
     .then(() => {
-      dispatch({ type: C.MODIFY_URL_COMPLETE })
+      dispatch({ type: C.REMOTE_MODIFY_URL_COMPLETE })
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
-      dispatch({ type: C.MODIFY_URL_COMPLETE })
+      dispatch({ type: C.REMOTE_MODIFY_URL_COMPLETE })
     })
 }
