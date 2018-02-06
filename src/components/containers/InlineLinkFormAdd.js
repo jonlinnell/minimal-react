@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { remoteAddURL, clearActiveUpdate } from '../../store/actions'
+import { remoteAddURL, clearAddingURL } from '../../store/actions'
 
 import InlineLinkForm from '../ui/InlineLinkForm'
 
@@ -8,12 +8,12 @@ const mapStateToProps = () => ({})
 
 const mapDispatchToProps = dispatch => ({
   callback(url) {
-    dispatch(clearActiveUpdate())
+    dispatch(clearAddingURL())
     dispatch(remoteAddURL(url))
   },
 
   onCancel() {
-    dispatch(clearActiveUpdate())
+    dispatch(clearAddingURL())
   }
 })
 

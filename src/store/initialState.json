@@ -13,5 +13,6 @@
     "remove": {
       "id": null
     }
-  }
+  },
+  "fetching": false
 }
