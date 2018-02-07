@@ -7,17 +7,17 @@ import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const SELECT_DELETING = 'ricochet-web/activeUpdate/remove/SET_DELETING'
-const DELETE_COMPLETE = 'ricochet-web/activeUpdate/remove/REMOTE_DELETE_COMPLETE'
+const SET = 'ricochet-web/activeUpdate/remove/SET'
+const CLEAR = 'ricochet-web/activeUpdate/remove/CLEAR'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case DELETE_COMPLETE:
+    case CLEAR:
       return Object.assign({}, state, {
         id: null
       })
 
-    case SELECT_DELETING:
+    case SET:
       return Object.assign({}, state, {
         id: action.payload
       })
@@ -28,7 +28,7 @@ const reducer = (state = null, action) => {
 }
 
 export const setDeletingURL = id => ({
-  type: SELECT_DELETING,
+  type: SET,
   payload: id
 })
 
@@ -41,14 +41,14 @@ export const remoteDeleteURL = id => (dispatch) => {
     headers: authHeader()
   })
     .then(() => {
-      dispatch({ type: DELETE_COMPLETE })
+      dispatch({ type: CLEAR })
       dispatch(clearFetching())
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
       dispatch(clearFetching())
-      dispatch({ type: DELETE_COMPLETE })
+      dispatch({ type: CLEAR })
     })
 }
 

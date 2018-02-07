@@ -7,15 +7,15 @@ import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const ADDING = 'ricochet-web/activeUpdate/add/ADDING'
-const COMPLETE = 'ricochet-web/activeUpdate/add/COMPLETE'
+const SET = 'ricochet-web/activeUpdate/add/SET'
+const CLEAR = 'ricochet-web/activeUpdate/add/CLEAR'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case ADDING:
+    case SET:
       return true
 
-    case COMPLETE:
+    case CLEAR:
       return false
 
     default:
@@ -23,8 +23,8 @@ const reducer = (state = null, action) => {
   }
 }
 
-export const setAddingURL = () => ({ type: ADDING })
-export const clearAddingURL = () => ({ type: COMPLETE })
+export const setAddingURL = () => ({ type: SET })
+export const clearAddingURL = () => ({ type: CLEAR })
 
 export const remoteAddURL = newURL => (dispatch) => {
   const { title, url } = newURL

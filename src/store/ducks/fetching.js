@@ -1,9 +1,9 @@
-const START = 'ricochet-web/fetching/START'
+const SET = 'ricochet-web/fetching/SET'
 const CLEAR = 'ricochet-web/fetching/CLEAR'
 
 const reducer = (state = false, action) => {
   switch (action.type) {
-    case START:
+    case SET:
       return true
 
     case CLEAR:
@@ -14,7 +14,7 @@ const reducer = (state = false, action) => {
   }
 }
 
-export const setFetching = () => ({ type: START })
+export const setFetching = () => ({ type: SET })
 export const clearFetching = () => ({ type: CLEAR })
 
 export default reducer

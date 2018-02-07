@@ -7,17 +7,17 @@ import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const SELECT_MODIFYING = 'ricochet-web/activeUpdate/modify/SELECT_MODIFYING'
-const CLEAR_MODIFYING = 'ricochet-web/activeUpdate/modify/CLEAR_MODIFYING'
+const SET = 'ricochet-web/activeUpdate/modify/SET'
+const CLEAR = 'ricochet-web/activeUpdate/modify/CLEAR'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case SELECT_MODIFYING:
+    case SET:
       return Object.assign({}, state, {
         id: action.payload
       })
 
-    case CLEAR_MODIFYING:
+    case CLEAR:
       return Object.assign({}, state, {
         id: null
       })
@@ -27,10 +27,10 @@ const reducer = (state = null, action) => {
   }
 }
 
-export const clearModifyURL = () => ({ type: CLEAR_MODIFYING })
+export const clearModifyURL = () => ({ type: CLEAR })
 
 export const setModifyURL = id => ({
-  type: SELECT_MODIFYING,
+  type: SET,
   payload: id
 })
 
