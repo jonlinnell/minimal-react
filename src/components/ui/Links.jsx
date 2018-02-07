@@ -19,7 +19,7 @@ class Links extends Component {
           <p>All links currently registered.</p>
           <button className='btn btn-sm btn-outline-primary ml-auto' onClick={this.props.onSetAddingURL}>Add</button>
         </div>
-        <Spinner enabled={this.props.data.isFetching} />
+        <Spinner enabled={this.props.fetching} />
         <ul className='list-group list-group-flush col-sm-12 p-0'>
           {this.props.activeUpdate.add
             ? <InlineLinkFormAdd />

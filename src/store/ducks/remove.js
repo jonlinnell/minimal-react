@@ -3,24 +3,17 @@ import axios from 'axios'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
-import { addError, loadURLs } from '../actions'
+import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
 const SELECT_DELETING = 'ricochet-web/activeUpdate/remove/SET_DELETING'
-const REMOTE_DELETE = 'ricochet-web/activeUpdate/remove/REMOTE_DELETE'
-const REMOTE_DELETE_COMPLETE = 'ricochet-web/activeUpdate/remove/REMOTE_DELETE_COMPLETE'
+const DELETE_COMPLETE = 'ricochet-web/activeUpdate/remove/REMOTE_DELETE_COMPLETE'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case REMOTE_DELETE:
+    case DELETE_COMPLETE:
       return Object.assign({}, state, {
-        isSubmitting: true
-      })
-
-    case REMOTE_DELETE_COMPLETE:
-      return Object.assign({}, state, {
-        isSubmitting: false,
         id: null
       })
 
@@ -40,7 +33,7 @@ export const setDeletingURL = id => ({
 })
 
 export const remoteDeleteURL = id => (dispatch) => {
-  dispatch({ type: REMOTE_DELETE })
+  dispatch(setFetching())
 
   axios({
     method: 'DELETE',
@@ -48,12 +41,14 @@ export const remoteDeleteURL = id => (dispatch) => {
     headers: authHeader()
   })
     .then(() => {
-      dispatch({ type: REMOTE_DELETE_COMPLETE })
+      dispatch({ type: DELETE_COMPLETE })
+      dispatch(clearFetching())
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
-      dispatch({ type: REMOTE_DELETE_COMPLETE })
+      dispatch(clearFetching())
+      dispatch({ type: DELETE_COMPLETE })
     })
 }
 

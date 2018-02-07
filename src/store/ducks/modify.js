@@ -3,27 +3,15 @@ import axios from 'axios'
 import hostResolver from '../../lib/hostResolver'
 import authHeader from '../../lib/authHeader'
 
-import { addError, loadURLs } from '../actions'
+import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const REMOTE_MODIFY = 'ricochet-web/activeUpdate/modify/REMOTE_MODIFY'
-const REMOTE_MODIFY_COMPLETE = 'ricochet-web/activeUpdate/modify/REMOTE_MODIFY_COMPLETE'
 const SELECT_MODIFYING = 'ricochet-web/activeUpdate/modify/SELECT_MODIFYING'
 const CLEAR_MODIFYING = 'ricochet-web/activeUpdate/modify/CLEAR_MODIFYING'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
-    case REMOTE_MODIFY:
-      return Object.assign({}, state, {
-        isSubmitting: true
-      })
-
-    case REMOTE_MODIFY_COMPLETE:
-      return Object.assign({}, state, {
-        isSubmitting: false
-      })
-
     case SELECT_MODIFYING:
       return Object.assign({}, state, {
         id: action.payload
@@ -49,7 +37,7 @@ export const setModifyURL = id => ({
 export const remoteModifyURL = updatedUrl => (dispatch) => {
   const { id, title, url } = updatedUrl
 
-  dispatch({ type: REMOTE_MODIFY, payload: id })
+  dispatch(setFetching())
 
   axios({
     method: 'PUT',
@@ -58,12 +46,12 @@ export const remoteModifyURL = updatedUrl => (dispatch) => {
     data: { title, url }
   })
     .then(() => {
-      dispatch({ type: REMOTE_MODIFY_COMPLETE })
+      dispatch(clearFetching())
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
-      dispatch({ type: REMOTE_MODIFY_COMPLETE })
+      dispatch(clearFetching())
     })
 }
 

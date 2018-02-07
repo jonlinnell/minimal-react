@@ -3,13 +3,12 @@ import axios from 'axios'
 import hostResolver from '../../lib/hostResolver'
 import authHeader from '../../lib/authHeader'
 
-import { addError, loadURLs } from '../actions'
+import { addError, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
 const ADDING = 'ricochet-web/activeUpdate/add/ADDING'
 const COMPLETE = 'ricochet-web/activeUpdate/add/COMPLETE'
-const REMOTE_ADD = 'ricochet-web/activeUpdate/add/REMOTE_ADD'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
@@ -30,7 +29,7 @@ export const clearAddingURL = () => ({ type: COMPLETE })
 export const remoteAddURL = newURL => (dispatch) => {
   const { title, url } = newURL
 
-  dispatch({ type: REMOTE_ADD })
+  dispatch(setFetching())
 
   axios({
     method: 'POST',
@@ -39,12 +38,12 @@ export const remoteAddURL = newURL => (dispatch) => {
     data: { title, url }
   })
     .then(() => {
-      dispatch({ type: COMPLETE })
+      dispatch(clearFetching())
       dispatch(loadURLs())
     })
     .catch((error) => {
       dispatch(addError(error.response.data.message))
-      dispatch({ type: COMPLETE })
+      dispatch(clearFetching())
     })
 }
 

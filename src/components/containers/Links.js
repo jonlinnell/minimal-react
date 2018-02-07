@@ -6,7 +6,8 @@ import Links from '../ui/Links'
 
 const mapStateToProps = state => ({
   data: state.data.urls,
-  activeUpdate: state.activeUpdate
+  activeUpdate: state.activeUpdate,
+  fetching: state.fetching
 })
 
 const mapDispatchToProps = dispatch => ({
