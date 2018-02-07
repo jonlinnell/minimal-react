@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class ModalConfirmDelete extends Component {
   render() {
-    const { id, title } = this.props.url
+    const { id, title } = this.props.url || { id: null, title: null }
 
     return (
       <div className="modal fade" id='confirmDelete' tabIndex="-1" role="dialog">

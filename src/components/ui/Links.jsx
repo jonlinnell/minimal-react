@@ -25,9 +25,7 @@ class Links extends Component {
             ? <InlineLinkFormAdd />
             : null}
           {this.props.data.urls.map(record => <URLRecord url={record} key={record.id} />)}
-          {this.props.activeUpdate.remove.id
-            ? <ModalConfirmDelete />
-            : null}
+          <ModalConfirmDelete />
         </ul>
       </div>
     )
