@@ -48,7 +48,7 @@ class Navbar extends Component {
 
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
-          <a className='navbar-brand'>MRBP</a>
+          <a className='navbar-brand'>Ricochet Web</a>
             <div className='btn-group btn-group-sm ml-auto' role='group' aria-label='Navigation'>
               {this.props.auth.isAuthenticated
                 ? navbarItemsAuthenticated
