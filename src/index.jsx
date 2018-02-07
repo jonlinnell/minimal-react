@@ -5,9 +5,14 @@ import { Provider } from 'react-redux'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
-
 import storeCreator from './store'
-import { addError, login, logout, sessionResume, remoteModifyURL } from './store/actions'
+import {
+  addError,
+  login,
+  logout,
+  sessionResume,
+  remoteModifyURL
+} from './store/actions'
 
 import App from './components/containers/App'
 

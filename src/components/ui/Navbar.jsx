@@ -31,7 +31,7 @@ class Navbar extends Component {
           Settings
         </button>
       </LinkContainer>,
-      <button type='button' className='btn btn-secondary' key='logout' onClick={this.props.onLogout} href='logout'>
+      <button type='button' className='btn btn-secondary' key='logout' onClick={() => this.props.onLogout(this.props.history)} href='logout'>
         <FontAwesomeIcon icon={ faSignOut } className='mr-2' />
         Logout ({this.props.auth.user})
       </button>
@@ -42,12 +42,6 @@ class Navbar extends Component {
         <button type='button' className='btn btn-secondary'>
           <FontAwesomeIcon icon={ faSignIn } className='mr-2' />
           Login
-        </button>
-      </LinkContainer>,
-      <LinkContainer to='/statistics' key='statistics'>
-        <button type='button' className='btn btn-secondary'>
-          <FontAwesomeIcon icon={ faChartLine } className='mr-2' />
-          Statistics
         </button>
       </LinkContainer>
     ]

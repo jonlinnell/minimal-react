@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Router } from 'react-router-dom'
 
 import PrivateRoute from '../misc/PrivateRoute'
 
@@ -7,6 +7,8 @@ import Navbar from '../containers/Navbar'
 import ClientError from '../containers/ClientError'
 import Login from '../containers/Login'
 import Links from '../containers/Links'
+
+import history from '../../history'
 
 const Home = () =>
   <div>
@@ -16,7 +18,7 @@ const Home = () =>
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router history={history}>
         <div>
           <Navbar />
           <div id='errors'>

@@ -3,6 +3,8 @@ import axios from 'axios'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
+import history from '../../history'
+
 const host = hostResolver()
 
 const LOGIN_REQUEST = 'ricochet-web/auth/LOGIN_REQUEST'
@@ -111,6 +113,7 @@ export const logout = () => (dispatch) => {
   localStorage.getItem('token')
     ? dispatch(logoutFailure())
     : dispatch(logoutSuccess())
+  history.push('/')
 }
 
 export default reducer
