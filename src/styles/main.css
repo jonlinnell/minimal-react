@@ -1,5 +1,9 @@
 /* Styles */
 
+body {
+  background-color: #e4e5e6;
+}
+
 .link-action {
   font-size: 0.8rem;
 }
