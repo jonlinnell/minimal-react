@@ -14,7 +14,7 @@ import Links from '../containers/Links'
 import history from '../../history'
 
 const DefaultHome = () =>
-  <div className='jumbotron col-sm-8 offset-sm-2'>
+  <div className='jumbotron col-xs-12 col-sm-4 offset-sm-4 card card-body bg-light px-4 mt-5'>
     <h1 className='display-4'>Login</h1>
     <p className='lead'>Please login to Ricochet with your account details to view and manage links, and see statistics and usage data.</p>
     <LinkContainer to='/login'>
