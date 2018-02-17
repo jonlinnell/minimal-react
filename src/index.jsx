@@ -7,7 +7,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 import storeCreator from './store'
 import {
-  addError,
   login,
   logout,
   sessionResume,
@@ -26,8 +25,6 @@ if (process.env.NODE_ENV === 'development') {
   window.logout = logout
   window.remoteModifyURL = remoteModifyURL
 }
-
-window.addEventListener('error', message => store.dispatch(addError(message)))
 
 if (localStorage.getItem('token')) {
   store.dispatch(sessionResume())
