@@ -12,7 +12,9 @@ import {
 
 import history from '../../history'
 
-const checkActivePage = (page) => {
+import Hamburger from '../containers/Hamburger'
+
+const checkActivePage = (page) => { // THIS DOESN'T WORK. Wrap components in HOC?
   const baseClasses = ['nav-link']
   if (history.location.pathname === page) {
     return [...baseClasses, 'active'].join(' ')
@@ -60,11 +62,9 @@ class Navbar extends Component {
     ]
 
     return (
-        <nav className='navbar navbar-expand-lg navbar-light'>
+        <nav className='navbar navbar-expand-lg align-items-center navbar-light'>
           <a className='navbar-brand'>Ricochet Web</a>
-          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar'>
-            <span className='navbar-toggler-icon'></span>
-          </button>
+          <Hamburger />
           <div className='collapse navbar-collapse' id='navbar'>
             <ul className='navbar-nav justify-content-end ml-auto' role='group' aria-label='Navigation'>
               {this.props.auth.isAuthenticated

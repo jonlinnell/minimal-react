@@ -13,6 +13,8 @@ import add from './ducks/add'
 import modify from './ducks/modify'
 import remove from './ducks/remove'
 
+import hamburger from './ducks/hamburger'
+
 const appReducer = combineReducers({
   activeUpdate: combineReducers({
     add,
@@ -25,7 +27,8 @@ const appReducer = combineReducers({
   }),
   errors,
   fetching,
-  form: formReducer
+  form: formReducer,
+  hamburger
 })
 
 export default (initialState = defaultInitialState) =>
