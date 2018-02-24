@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const extractTextPlugin = require('extract-text-webpack-plugin')
 const dotenvWebpack = require('dotenv-webpack')
@@ -19,6 +20,11 @@ module.exports = {
       path: paths.app + '/.env',
       systemvars: true
     }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    })
   ],
   module: {
     loaders: [

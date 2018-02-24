@@ -62,11 +62,16 @@ class Navbar extends Component {
     return (
         <nav className='navbar navbar-expand-lg navbar-light'>
           <a className='navbar-brand'>Ricochet Web</a>
-            <ul className='nav justify-content-end ml-auto' role='group' aria-label='Navigation'>
+          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar'>
+            <span className='navbar-toggler-icon'></span>
+          </button>
+          <div className='collapse navbar-collapse' id='navbar'>
+            <ul className='navbar-nav justify-content-end ml-auto' role='group' aria-label='Navigation'>
               {this.props.auth.isAuthenticated
                 ? navbarItemsAuthenticated
                 : navbarItemsUnauthenticated}
             </ul>
+          </div>
         </nav>
     )
   }
