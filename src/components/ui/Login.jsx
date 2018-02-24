@@ -5,9 +5,9 @@ import { Field, reduxForm } from 'redux-form'
 let LoginForm = (props) => {
   const { pristine, submitting, handleSubmit } = props
   return (
-    <div className='col-xs-12 col-sm-4 offset-sm-4 card card-body bg-light px-4 mt-5'>
-      <h1>Login</h1>
-      <p className='text-secondary'>You need to log in to have access to this service.</p>
+    <div className='jumbotron col-xs-12 col-sm-4 offset-sm-4 card card-body bg-light px-4 mt-5'>
+      <h1 className='display-4'>Login</h1>
+      <p className='lead'>You need to log in to have access to this service.</p>
       <form onSubmit={handleSubmit} className='form-horizontal'>
         <div className='form-group'>
           <Field className='form-control' component='input' type='text' name='username'></Field>
