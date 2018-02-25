@@ -4,10 +4,11 @@ import thunk from 'redux-thunk'
 
 import defaultInitialState from './initialState.json'
 
-import errors from './ducks/errors'
 import auth from './ducks/auth'
-import urls from './ducks/urls'
+import clicks from './ducks/clicks'
+import errors from './ducks/errors'
 import fetching from './ducks/fetching'
+import urls from './ducks/urls'
 
 import add from './ducks/add'
 import modify from './ducks/modify'
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
     remove
   }),
   auth,
+  clicks,
   data: combineReducers({
     urls
   }),
