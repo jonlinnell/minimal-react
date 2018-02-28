@@ -7,8 +7,9 @@ import InlineLinkFormAdd from '../containers/InlineLinkFormAdd'
 import ModalConfirmDelete from '../containers/ModalConfirmDelete'
 
 class Links extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadURLs()
+    this.props.loadClickCounts()
   }
 
   render() {

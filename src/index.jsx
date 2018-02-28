@@ -11,8 +11,7 @@ import storeCreator from './store'
 import {
   login,
   logout,
-  sessionResume,
-  countClicksByUrl
+  sessionResume
 } from './store/actions'
 
 import App from './components/containers/App'
@@ -25,7 +24,6 @@ if (process.env.NODE_ENV === 'development') {
   window.store = store
   window.login = login
   window.logout = logout
-  window.countClicksByUrl = countClicksByUrl
 }
 
 if (localStorage.getItem('token')) {

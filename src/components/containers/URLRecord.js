@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import {
-  loadClicks,
   setModifyURL,
   setDeletingURL,
   clearModifyURL,
@@ -11,15 +10,12 @@ import {
 
 import URLRecord from '../ui/URLRecord'
 
-const mapStateToProps = state => ({
-  modify: state.activeUpdate.modify
+const mapStateToProps = (state, ownProps) => ({
+  modify: state.activeUpdate.modify,
+  clicks: state.clicks.count.find(i => i.URLId === ownProps.url.id) || []
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadClicks(id) {
-    dispatch(loadClicks(id))
-  },
-
   onSetModifyURL(id) {
     dispatch(setModifyURL(id))
   },
