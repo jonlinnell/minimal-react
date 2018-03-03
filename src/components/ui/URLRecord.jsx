@@ -8,19 +8,13 @@ const secondaryActionClasses = ['text-secondary', 'font-weight-light']
 const linkActionClasses = [...secondaryActionClasses, 'link-action', 'ml-2']
 
 class LinkRecord extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { clicks: props.clicks.count }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.clicks.count !== nextProps.clicks.count) {
-      this.setState({ clicks: nextProps.clicks.count })
-    }
-  }
-
   render() {
-    const { id, title, url } = this.props.url
+    const {
+      id,
+      title,
+      url,
+      clicks
+    } = this.props.url
 
     return this.props.modify.id === id
       ? <InlineLinkFormUpdate />
@@ -38,7 +32,7 @@ class LinkRecord extends Component {
           </div>
           <div className='row d-flex align-items-center justify-content-end mt-2'>
             <p className={[...secondaryActionClasses, 'm-0', 'mr-auto', 'click-count'].join(' ')}>
-              {this.state.clicks}{this.state.clicks ? ' clicks' : null}
+              {clicks ? `${clicks} clicks` : null}
             </p>
             <a
               className={linkActionClasses.join(' ')}

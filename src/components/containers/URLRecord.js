@@ -10,9 +10,8 @@ import {
 
 import URLRecord from '../ui/URLRecord'
 
-const mapStateToProps = (state, ownProps) => ({
-  modify: state.activeUpdate.modify,
-  clicks: state.clicks.count.find(i => i.URLId === ownProps.url.id) || []
+const mapStateToProps = state => ({
+  modify: state.activeUpdate.modify
 })
 
 const mapDispatchToProps = dispatch => ({

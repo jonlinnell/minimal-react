@@ -5,7 +5,6 @@ import thunk from 'redux-thunk'
 import defaultInitialState from './initialState.json'
 
 import auth from './ducks/auth'
-import clicks from './ducks/clicks'
 import errors from './ducks/errors'
 import fetching from './ducks/fetching'
 import urls from './ducks/urls'
@@ -23,7 +22,6 @@ const appReducer = combineReducers({
     remove
   }),
   auth,
-  clicks,
   data: combineReducers({
     urls
   }),

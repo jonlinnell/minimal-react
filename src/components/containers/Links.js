@@ -2,8 +2,7 @@ import { connect } from 'react-redux'
 
 import {
   loadURLs,
-  setAddingURL,
-  loadClickCounts
+  setAddingURL
 } from '../../store/actions'
 
 import Links from '../ui/Links'
@@ -11,16 +10,12 @@ import Links from '../ui/Links'
 const mapStateToProps = state => ({
   data: state.data.urls,
   activeUpdate: state.activeUpdate,
-  fetching: state.fetching,
-  clicks: state.clicks
+  fetching: state.fetching
 })
 
 const mapDispatchToProps = dispatch => ({
   loadURLs() {
     dispatch(loadURLs())
-  },
-  loadClickCounts() {
-    dispatch(loadClickCounts())
   },
   onSetAddingURL() {
     dispatch(setAddingURL())
