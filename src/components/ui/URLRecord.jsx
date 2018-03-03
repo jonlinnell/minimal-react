@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faMousePointer, faCalendar } from '@fortawesome/fontawesome-free-solid'
 
 import InlineLinkFormUpdate from '../containers/InlineLinkFormUpdate'
 
@@ -13,8 +15,16 @@ class LinkRecord extends Component {
       id,
       title,
       url,
-      clicks
+      clicks,
+      createdAt
     } = this.props.url
+
+    const zeroPad = n => (n < 10 ? `0${n}` : n)
+
+    const formatDate = (rawDate) => {
+      const date = new Date(rawDate)
+      return `${date.getFullYear()}-${zeroPad(date.getMonth())}-${zeroPad(date.getDate())}`
+    }
 
     return this.props.modify.id === id
       ? <InlineLinkFormUpdate />
@@ -31,9 +41,10 @@ class LinkRecord extends Component {
             </a>
           </div>
           <div className='row d-flex align-items-center justify-content-end mt-2'>
-            <p className={[...secondaryActionClasses, 'm-0', 'mr-auto', 'click-count'].join(' ')}>
-              {clicks ? `${clicks} clicks` : null}
-            </p>
+            <div className={[...secondaryActionClasses, 'm-0', 'mr-auto', 'click-count'].join(' ')}>
+              {clicks ? <span className='mr-3'><FontAwesomeIcon className='mr-0' icon={faMousePointer} /> {clicks}</span> : null}
+              <span><FontAwesomeIcon className='mr-1' icon={faCalendar} />{formatDate(createdAt)}</span>
+            </div>
             <a
               className={linkActionClasses.join(' ')}
               onClick={() => this.props.onSetModifyURL(id)}
