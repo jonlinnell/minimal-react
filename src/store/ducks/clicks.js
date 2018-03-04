@@ -7,24 +7,24 @@ import { addError, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const UPDATE = 'ricochet-web/data/urls/UPDATE_URLS'
+const UPDATE = 'ricochet-web/data/clicks/UPDATE_CLICKS'
 
 const reducer = (state = null, action) => {
-  switch (action.type) {
+	switch(action.type) {
     case UPDATE:
       return action.payload
 
-    default:
-      return state
-  }
+		default:
+			return state
+	}
 }
 
-export const loadURLs = () => (dispatch) => {
+export const loadClicks = () => (dispatch) => {
   dispatch(setFetching())
 
   axios({
     method: 'GET',
-    url: `${host}/url`,
+    url: `${host}/clicks`,
     headers: authHeader()
   })
     .then((response) => {

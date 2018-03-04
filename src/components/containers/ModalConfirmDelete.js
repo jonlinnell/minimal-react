@@ -5,7 +5,7 @@ import { remoteDeleteURL } from '../../store/actions'
 import ModalConfirmDelete from '../ui/ModalConfirmDelete'
 
 const mapStateToProps = state => ({
-  url: state.data.urls.urls.filter(url => url.id === state.activeUpdate.remove.id)[0]
+  url: state.data.urls.filter(url => url.id === state.activeUpdate.remove.id)[0]
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -8,6 +8,7 @@ import auth from './ducks/auth'
 import errors from './ducks/errors'
 import fetching from './ducks/fetching'
 import urls from './ducks/urls'
+import clicks from './ducks/clicks'
 
 import add from './ducks/add'
 import modify from './ducks/modify'
@@ -23,6 +24,7 @@ const appReducer = combineReducers({
   }),
   auth,
   data: combineReducers({
+    clicks,
     urls
   }),
   errors,

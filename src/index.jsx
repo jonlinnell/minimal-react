@@ -11,7 +11,8 @@ import storeCreator from './store'
 import {
   login,
   logout,
-  sessionResume
+  sessionResume,
+  loadClicks
 } from './store/actions'
 
 import App from './components/containers/App'
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV === 'development') {
   window.store = store
   window.login = login
   window.logout = logout
+  window.loadClicks = loadClicks
 }
 
 if (localStorage.getItem('token')) {
