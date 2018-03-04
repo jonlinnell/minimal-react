@@ -3,6 +3,9 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faMousePointer, faCalendar } from '@fortawesome/fontawesome-free-solid'
 
 import InlineLinkFormUpdate from '../containers/InlineLinkFormUpdate'
+import URLFrequencyGraph from '../containers/URLFrequencyGraph'
+
+import { formatDate } from '../../lib/dates'
 
 import '../../styles/URLRecord.css'
 
@@ -18,13 +21,6 @@ class LinkRecord extends Component {
       clicks,
       createdAt
     } = this.props.url
-
-    const zeroPad = n => (n < 10 ? `0${n}` : n)
-
-    const formatDate = (rawDate) => {
-      const date = new Date(rawDate)
-      return `${date.getFullYear()}-${zeroPad(date.getMonth())}-${zeroPad(date.getDate())}`
-    }
 
     return this.props.modify.id === id
       ? <InlineLinkFormUpdate />
@@ -52,7 +48,11 @@ class LinkRecord extends Component {
             >
               Modify
             </a>
-            <a className={linkActionClasses.join(' ')}>Stats</a>
+            <a
+              className={linkActionClasses.join(' ')}
+            >
+              Stats
+            </a>
             <a
               className={linkActionClasses.join(' ')}
               onClick={() => this.props.onSelectDeleteURL(id)}
@@ -63,6 +63,10 @@ class LinkRecord extends Component {
               Delete
             </a>
           </div>
+          {clicks
+            ? <URLFrequencyGraph URLId={id} />
+            : null
+          }
         </li>
   }
 }

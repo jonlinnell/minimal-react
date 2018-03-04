@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 
 import {
   loadURLs,
+  loadClicks,
   setAddingURL
 } from '../../store/actions'
 
@@ -16,6 +17,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   loadURLs() {
     dispatch(loadURLs())
+  },
+  loadClicks() {
+    dispatch(loadClicks())
   },
   onSetAddingURL() {
     dispatch(setAddingURL())

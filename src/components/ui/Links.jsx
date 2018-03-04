@@ -9,6 +9,7 @@ import ModalConfirmDelete from '../containers/ModalConfirmDelete'
 class Links extends Component {
   componentWillMount() {
     this.props.loadURLs()
+    this.props.loadClicks()
   }
 
   render() {
