@@ -26,14 +26,14 @@ class LinkRecord extends Component {
       ? <InlineLinkFormUpdate />
       : <li className='list-group-item'>
           <div className='row d-flex align-items-center justify-content-start'>
-            <p className='col-sm-4 col-xs 12 h5 m-0 p-0'>{title}</p>
+            <p className='col-sm-4 col-xs 12 text-title m-0 p-0'>{title}</p>
             <a
-              className='col-sm-8 col-xs-12 h5 m-0 p-0 text-info url'
+              className='col-sm-8 col-xs-12 m-0 p-0 text-info text-url'
               href={url}
               title={url}
               target='_blank'
             >
-              <em>{url}</em>
+              {url}
             </a>
           </div>
           <div className='row d-flex align-items-center justify-content-end mt-2'>
