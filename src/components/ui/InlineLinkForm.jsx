@@ -13,8 +13,20 @@ let LinkForm = (props) => {
     <form className='list-group-item form-inline' onSubmit={handleSubmit}>
       <div className='row'>
         <Field className='form-control' component='input' type='hidden' name='id'></Field>
-        <Field className='form-control col-sm-4 p-2' component='input' type='text' name='title'></Field>
-        <Field className='form-control col-sm-8 p-2' component='input' type='text' name='url'></Field>
+        <Field
+          className='form-control col-sm-4 p-2'
+          component='input'
+          type='text'
+          name='title'
+          placeholder='Link name'
+        ></Field>
+        <Field
+        className='form-control col-sm-8 p-2'
+        component='input'
+        type='text'
+        name='url'
+        placeholder='URL'
+      ></Field>
       </div>
       <div className='w-100 d-flex mt-2 justify-content-end'>
         <button
