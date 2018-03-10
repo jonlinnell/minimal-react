@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faMousePointer, faCalendar } from '@fortawesome/fontawesome-free-solid'
 
 import InlineLinkFormUpdate from '../containers/InlineLinkFormUpdate'
-import URLFrequencyGraph from '../containers/URLFrequencyGraph'
+// import URLFrequencyGraph from '../containers/URLFrequencyGraph'
 
 import { formatDate } from '../../lib/dates'
 
@@ -63,10 +63,6 @@ class LinkRecord extends Component {
               Delete
             </a>
           </div>
-          {clicks
-            ? <URLFrequencyGraph URLId={id} />
-            : null
-          }
         </li>
   }
 }
