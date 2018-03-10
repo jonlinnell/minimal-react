@@ -28,7 +28,7 @@ let LinkForm = (props) => {
         placeholder='URL'
       ></Field>
       </div>
-      <div className='w-100 d-flex mt-2 justify-content-end'>
+      <div className='m-0 d-flex mt-2 justify-content-end'>
         <button
           type="submit"
           className="btn btn-sm btn-primary"
