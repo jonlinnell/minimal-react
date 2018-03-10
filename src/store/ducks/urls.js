@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { combineReducers } from 'redux'
 
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
@@ -7,12 +8,32 @@ import { addError, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const UPDATE = 'ricochet-web/data/urls/UPDATE_URLS'
+const UPDATE = 'ricochet-web/data/urls/all/UPDATE_URLS'
 
-const reducer = (state = null, action) => {
+const FILTER = 'ricochet-web/data/urls/filter/FILTER'
+const CLEAR_FILTER = 'ricochet-web/data/urls/filter/CLEAR_FILTER'
+
+export const setFilter = filter => ({ type: FILTER, payload: filter })
+
+export const clearFilter = () => ({ type: CLEAR_FILTER })
+
+const all = (state = null, action) => {
   switch (action.type) {
     case UPDATE:
       return action.payload
+
+    default:
+      return state
+  }
+}
+
+const filter = (state = null, action) => {
+  switch (action.type) {
+    case FILTER:
+      return action.payload
+
+    case CLEAR_FILTER:
+      return null
 
     default:
       return state
@@ -40,4 +61,4 @@ export const loadURLs = () => (dispatch) => {
     })
 }
 
-export default reducer
+export default combineReducers({ all, filter })

@@ -3,13 +3,16 @@ import { connect } from 'react-redux'
 import {
   loadURLs,
   loadClicks,
-  setAddingURL
+  setAddingURL,
+  setFilter,
+  clearFilter
 } from '../../store/actions'
 
 import Links from '../ui/Links'
 
 const mapStateToProps = state => ({
-  data: state.data.urls,
+  allURLs: state.data.urls.all,
+  filter: state.data.urls.filter,
   activeUpdate: state.activeUpdate,
   fetching: state.fetching
 })
@@ -23,6 +26,12 @@ const mapDispatchToProps = dispatch => ({
   },
   onSetAddingURL() {
     dispatch(setAddingURL())
+  },
+  handleSetFilter(filter) {
+    dispatch(setFilter(filter))
+  },
+  handleClearFilter() {
+    dispatch(clearFilter())
   }
 })
 

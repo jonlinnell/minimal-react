@@ -9,6 +9,8 @@ import URLRecord from '../containers/URLRecord'
 import InlineLinkFormAdd from '../containers/InlineLinkFormAdd'
 import ModalConfirmDelete from '../containers/ModalConfirmDelete'
 
+import '../../styles/Links.css'
+
 class Links extends Component {
   componentWillMount() {
     this.props.loadURLs()
@@ -16,6 +18,12 @@ class Links extends Component {
   }
 
   render() {
+    let filterInput
+    const { allURLs, filter } = this.props
+    const links = filter
+      ? allURLs.filter(i => i.title.toLowerCase().match(filter.toLowerCase()))
+      : allURLs
+
     return (
       <div className='container card card-body my-3'>
         <div className='w-100 d-flex justify-content-start align-items-center mb-2'>
@@ -25,11 +33,18 @@ class Links extends Component {
           </button>
         </div>
         <Spinner enabled={this.props.fetching} />
-        <ul className='list-group list-group-flush col-sm-12 p-0'>
+        <input
+          name='filter'
+          ref={input => filterInput = input} // eslint-disable-line no-return-assign
+          onChange={() => this.props.handleSetFilter(filterInput.value)}
+          className='form-control input-filter p-1 mt-2'
+          placeholder='Filter links...'
+        />
+        <ul className='list-group list-group-flush list-urls col-sm-12 p-0'>
           {this.props.activeUpdate.add
             ? <InlineLinkFormAdd />
             : null}
-          {this.props.data.map(record => <URLRecord url={record} key={record.id} />)}
+          {links.map(record => <URLRecord url={record} key={record.id} />)}
           <ModalConfirmDelete />
         </ul>
       </div>
