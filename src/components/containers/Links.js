@@ -28,10 +28,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(setAddingURL())
   },
   handleSetFilter(filter) {
-    dispatch(setFilter(filter))
-  },
-  handleClearFilter() {
-    dispatch(clearFilter())
+    filter === ''
+      ? dispatch(clearFilter())
+      : dispatch(setFilter(filter))
   }
 })
 
