@@ -28,7 +28,7 @@ class Links extends Component {
       <div className='container card card-body my-3'>
         <div className='w-100 d-flex justify-content-start align-items-center mb-2'>
           <h3 className='m-0'>Links</h3>
-          <button className='btn btn-outline-secondary ml-auto' onClick={this.props.onSetAddingURL}>
+          <button className='btn btn-sm btn-outline-secondary ml-auto' onClick={this.props.onSetAddingURL}>
             <FontAwesomeIcon icon={faPlus} />
           </button>
         </div>
