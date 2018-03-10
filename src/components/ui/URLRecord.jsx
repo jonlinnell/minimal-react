@@ -38,8 +38,8 @@ class LinkRecord extends Component {
           </div>
           <div className='row d-flex align-items-center justify-content-end mt-2'>
             <div className={[...secondaryActionClasses, 'm-0', 'mr-auto', 'click-count'].join(' ')}>
-              {clicks ? <span className='mr-3'><FontAwesomeIcon className='mr-0' icon={faMousePointer} /> {clicks}</span> : null}
-              <span><FontAwesomeIcon className='mr-1' icon={faCalendar} />{formatDate(createdAt)}</span>
+              {clicks ? <span className='mr-3'><FontAwesomeIcon className='mr-0 fa-info' icon={faMousePointer} /> {clicks}</span> : null}
+              <span><FontAwesomeIcon className='mr-1 fa-info' icon={faCalendar} />{formatDate(createdAt)}</span>
             </div>
             <a
               className={linkActionClasses.join(' ')}
