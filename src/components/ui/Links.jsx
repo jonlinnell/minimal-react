@@ -33,9 +33,9 @@ class Links extends Component {
       : allURLs
 
     return (
-      <div className='container'>
+      <div className='container-fluid'>
         <div className='row'>
-          <div className='col-sm-12 col-md-10 offset-md-1 card-body'>
+          <div className='col-sm-12 col-md-8 offset-md-2 card-body'>
             <div className='w-100 d-flex justify-content-start align-items-center mb-2'>
               <h3 className='m-0'>Links</h3>
               <button className='btn btn-sm btn-outline-secondary ml-auto' onClick={onSetAddingURL}>
