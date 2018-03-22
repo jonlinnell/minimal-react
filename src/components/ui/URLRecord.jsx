@@ -7,7 +7,7 @@ import InlineLinkFormUpdate from '../containers/InlineLinkFormUpdate'
 
 import { formatDate } from '../../lib/dates'
 
-import '../../styles/URLRecord.css'
+import '../../styles/URLRecord.scss'
 
 const secondaryActionClasses = ['text-secondary', 'font-weight-light']
 const linkActionClasses = [...secondaryActionClasses, 'link-action', 'ml-2']
@@ -28,7 +28,7 @@ class LinkRecord extends Component {
           <div className='row d-flex align-items-center justify-content-start'>
             <p className='col-sm-4 col-xs 12 text-title m-0 p-0'>{title}</p>
             <a
-              className='col-sm-8 col-xs-12 m-0 p-0 text-info text-url'
+              className='col-sm-8 col-xs-12 m-0 p-0 text-url'
               href={url}
               title={url}
               target='_blank'

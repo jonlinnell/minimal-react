@@ -1,3 +1,5 @@
+@import './custom.scss';
+
 .click-count {
   font-size: 0.8rem;
 }
@@ -11,6 +13,7 @@
 }
 
 .text-url {
+  color: $primary;
   font-size: 1.1rem;
   white-space: nowrap;
   overflow: hidden;

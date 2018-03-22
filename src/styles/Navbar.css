@@ -15,5 +15,5 @@ nav {
 }
 
 .navbar {
-  padding: 8px 64px;
+  padding: 8px 64px !important;
 }

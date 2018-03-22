@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
 import 'jquery'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap'
+import 'bootstrap/dist/js/bootstrap.min'
 
+import './styles/main.scss'
 
 import storeCreator from './store'
 import {
@@ -16,8 +16,6 @@ import {
 } from './store/actions'
 
 import App from './components/containers/App'
-
-import './styles/main.css'
 
 const store = storeCreator()
 
