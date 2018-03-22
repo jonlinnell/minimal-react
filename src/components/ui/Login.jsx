@@ -5,17 +5,19 @@ import { Field, reduxForm } from 'redux-form'
 let LoginForm = (props) => {
   const { pristine, submitting, handleSubmit } = props
   return (
-    <div className='jumbotron col-xs-12 col-sm-4 offset-sm-4 card card-body bg-light px-4 mt-5'>
+    <div className='col-xs-12 col-sm-8 offset-sm-2 px-4 mt-5'>
       <h1 className='display-4'>Login</h1>
-      <p className='lead'>You need to log in to have access to this service.</p>
-      <form onSubmit={handleSubmit} className='form-horizontal'>
-        <div className='form-group'>
-          <Field className='form-control' component='input' type='text' name='username'></Field>
+      <p className='text-secondary mb-3'>You must log in to continue.</p>
+      <form onSubmit={handleSubmit}>
+        <div className='form-row'>
+          <div className='form-group col-sm-6'>
+            <Field className='form-control' component='input' type='text' name='username' placeholder='Username'></Field>
+          </div>
+          <div className='form-group col-sm-6'>
+            <Field className='form-control' component='input' type='password' name='password' placeholder='Password'></Field>
+          </div>
         </div>
-        <div className='form-group'>
-          <Field className='form-control' component='input' type='password' name='password'></Field>
-        </div>
-        <button type="submit" className="btn btn-primary btn-block" disabled={pristine || submitting}>Login</button>
+        <button type="submit" className="btn btn-primary btn-block px-1" disabled={pristine || submitting}>Login</button>
         {props.auth.error
           ? <p className='alert alert-danger mb-0 mt-3 p-2' role='alert'>{props.auth.error}</p>
           : null}

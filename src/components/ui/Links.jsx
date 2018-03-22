@@ -33,32 +33,28 @@ class Links extends Component {
       : allURLs
 
     return (
-      <div className='container-fluid'>
-        <div className='row'>
-          <div className='col-sm-12 col-md-8 offset-md-2 card-body'>
-            <div className='w-100 d-flex justify-content-start align-items-center mb-2'>
-              <h3 className='m-0'>Links</h3>
-              <button className='btn btn-sm btn-outline-secondary ml-auto' onClick={onSetAddingURL}>
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-            </div>
-            <Spinner enabled={fetching} />
-            <input
-              name='filter'
-              ref={input => filterInput = input} // eslint-disable-line no-return-assign
-              onChange={() => handleSetFilter(filterInput.value)}
-              className='form-control input-filter p-1 mt-2'
-              placeholder='Filter links...'
-            />
-            <ul className='list-group list-group-flush list-urls col-sm-12 p-0'>
-              {activeUpdate.add
-                ? <InlineLinkFormAdd />
-                : null}
-              {links.map(record => <URLRecord url={record} key={record.id} />)}
-              <ModalConfirmDelete />
-            </ul>
-          </div>
+      <div className='card-body'>
+        <div className='w-100 d-flex justify-content-start align-items-center mb-2'>
+          <h3 className='m-0'>Links</h3>
+          <button className='btn btn-sm btn-outline-secondary ml-auto' onClick={onSetAddingURL}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
         </div>
+        <Spinner enabled={fetching} />
+        <input
+          name='filter'
+          ref={input => filterInput = input} // eslint-disable-line no-return-assign
+          onChange={() => handleSetFilter(filterInput.value)}
+          className='form-control input-filter p-1 mt-2'
+          placeholder='Filter links...'
+        />
+        <ul className='list-group list-group-flush list-urls col-sm-12 p-0'>
+          {activeUpdate.add
+            ? <InlineLinkFormAdd />
+            : null}
+          {links.map(record => <URLRecord url={record} key={record.id} />)}
+          <ModalConfirmDelete />
+        </ul>
       </div>
     )
   }

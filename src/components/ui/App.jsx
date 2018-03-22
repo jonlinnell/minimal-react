@@ -14,9 +14,9 @@ import Links from '../containers/Links'
 import history from '../../history'
 
 const DefaultHome = () =>
-  <div className='jumbotron col-xs-12 col-sm-4 offset-sm-4 card card-body bg-light px-4 mt-5'>
-    <h1 className='display-4'>Login</h1>
-    <p className='lead'>Please login to Ricochet with your account details to view and manage links, and see statistics and usage data.</p>
+  <div className='col-xs-12 col-sm-8 offset-sm-2 px-4 mt-5'>
+    <h1 className='display-4 mb-3'>Login</h1>
+    <p className='text-secondary'>In order to view and manage links, statistics, users, and settings, you must log in.</p>
     <LinkContainer to='/login'>
       <button className='btn btn-primary'>
         <FontAwesomeIcon className='mr-2' icon={ faSignInAlt } />
@@ -35,9 +35,15 @@ class App extends Component {
             {this.props.errors.map((error, i) => <ClientError key={i} index={i} error={error} />)}
           </div>
 
-          <Route exact path='/' component={this.props.auth.isAuthenticated ? null : DefaultHome} />
-          <Route path='/login' component={Login} />
-          <PrivateRoute path='/links' component={Links} />
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-sm-12 col-md-8 offset-md-2'>
+                <Route exact path='/' component={this.props.auth.isAuthenticated ? null : DefaultHome} />
+                <Route path='/login' component={Login} />
+                <PrivateRoute path='/links' component={Links} />
+              </div>
+            </div>
+          </div>
         </div>
       </Router>
     )

@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
+      title: 'Ricochet',
       template: paths.src + '/template/index.html'
     }),
     new extractTextPlugin('bundle.css'),
