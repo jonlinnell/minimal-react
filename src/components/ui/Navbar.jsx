@@ -62,17 +62,21 @@ class Navbar extends Component {
     ]
 
     return (
-        <nav className='navbar navbar-expand-lg align-items-center navbar-light'>
-          <a className='navbar-brand'>Ricochet Web</a>
-          <Hamburger />
-          <div className='collapse navbar-collapse' id='navbar'>
-            <ul className='navbar-nav justify-content-end ml-auto' role='group' aria-label='Navigation'>
-              {this.props.auth.isAuthenticated
-                ? navbarItemsAuthenticated
-                : navbarItemsUnauthenticated}
-            </ul>
-          </div>
-        </nav>
+      <div className='container-fluid p-0'>
+        <div className='col-sm-12 nav-bg'>
+          <nav className='navbar navbar-expand-lg align-items-center navbar-dark col-sm-12 col-md-10 offset-md-1'>
+            <a className='navbar-brand'>Ricochet Web</a>
+            <Hamburger />
+            <div className='collapse navbar-collapse' id='navbar'>
+              <ul className='navbar-nav justify-content-end ml-auto' role='group' aria-label='Navigation'>
+                {this.props.auth.isAuthenticated
+                  ? navbarItemsAuthenticated
+                  : navbarItemsUnauthenticated}
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
     )
   }
 }

@@ -1,6 +1,19 @@
 /* Navbar styles */
 
 nav {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid rgba(0,0,0,0.125)
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+  color: #fff;
+}
+
+.nav-bg {
+  background-color: #005E82;
+}
+
+.nav-item, .nav-link {
+  color: #fff !important;
+  font-size: 0.9rem;
+}
+
+.navbar {
+  padding: 8px 64px;
 }
