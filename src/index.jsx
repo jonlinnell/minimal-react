@@ -12,7 +12,7 @@ import {
   login,
   logout,
   sessionResume,
-  loadClicks
+  loadUserList
 } from './store/actions'
 
 import App from './components/containers/App'
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'development') {
   window.store = store
   window.login = login
   window.logout = logout
-  window.loadClicks = loadClicks
+  window.loadUserList = loadUserList
 }
 
 if (localStorage.getItem('token')) {

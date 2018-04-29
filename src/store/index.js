@@ -8,6 +8,7 @@ import auth from './ducks/auth'
 import errors from './ducks/errors'
 import fetching from './ducks/fetching'
 import urls from './ducks/urls'
+import users from './ducks/users'
 import clicks from './ducks/clicks'
 
 import add from './ducks/add'
@@ -30,7 +31,8 @@ const appReducer = combineReducers({
   errors,
   fetching,
   form: formReducer,
-  hamburger
+  hamburger,
+  users
 })
 
 export default (initialState = defaultInitialState) =>

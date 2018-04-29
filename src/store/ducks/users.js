@@ -8,16 +8,16 @@ import { addError, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const UPDATE = 'ricochet-web/data/urls/all/UPDATE_URLS'
+const UPDATE = 'ricochet-web/users/data/UPDATE_USERS'
 
-const FILTER = 'ricochet-web/data/urls/filter/FILTER'
-const CLEAR_FILTER = 'ricochet-web/data/urls/filter/CLEAR_FILTER'
+const FILTER = 'ricochet-web/users/filter/FILTER'
+const CLEAR_FILTER = 'ricochet-web/users/filter/CLEAR_FILTER'
 
-export const setURLFilter = filter => ({ type: FILTER, payload: filter })
+export const setFilter = filter => ({ type: FILTER, payload: filter })
 
-export const clearURLFilter = () => ({ type: CLEAR_FILTER })
+export const clearFilter = () => ({ type: CLEAR_FILTER })
 
-const all = (state = null, action) => {
+const data = (state = null, action) => {
   switch (action.type) {
     case UPDATE:
       return action.payload
@@ -40,12 +40,12 @@ const filter = (state = null, action) => {
   }
 }
 
-export const loadURLs = () => (dispatch) => {
+export const loadUserList = () => (dispatch) => {
   dispatch(setFetching())
 
   axios({
     method: 'GET',
-    url: `${host}/url`,
+    url: `${host}/auth/user`,
     headers: authHeader()
   })
     .then((response) => {
@@ -61,4 +61,4 @@ export const loadURLs = () => (dispatch) => {
     })
 }
 
-export default combineReducers({ all, filter })
+export default combineReducers({ data, filter })

@@ -6,10 +6,11 @@ import { faSignInAlt } from '@fortawesome/fontawesome-free-solid'
 
 import PrivateRoute from '../misc/PrivateRoute'
 
-import Navbar from '../containers/Navbar'
 import ClientError from '../containers/ClientError'
-import Login from '../containers/Login'
 import Links from '../containers/Links'
+import Login from '../containers/Login'
+import Navbar from '../containers/Navbar'
+import Settings from '../ui/Settings'
 
 import history from '../../history'
 
@@ -41,6 +42,7 @@ class App extends Component {
                 <Route exact path='/' component={this.props.auth.isAuthenticated ? null : DefaultHome} />
                 <Route path='/login' component={Login} />
                 <PrivateRoute path='/links' component={Links} />
+                <PrivateRoute path='/settings' component={Settings} />
               </div>
             </div>
           </div>

@@ -5,8 +5,8 @@ import {
   loadClicks,
   setAddingURL,
   clearAddingURL,
-  setFilter,
-  clearFilter
+  setURLFilter,
+  clearURLFilter
 } from '../../store/actions'
 
 import Links from '../ui/Links'
@@ -26,14 +26,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch(loadClicks())
   },
   onSetAddingURL() {
-    dispatch(clearFilter())
+    dispatch(clearURLFilter())
     dispatch(setAddingURL())
   },
   handleSetFilter(filter) {
     dispatch(clearAddingURL())
     filter === ''
-      ? dispatch(clearFilter())
-      : dispatch(setFilter(filter))
+      ? dispatch(clearURLFilter())
+      : dispatch(setURLFilter(filter))
   }
 })
 

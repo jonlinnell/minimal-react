@@ -16,5 +16,8 @@
       "id": null
     }
   },
-  "fetching": false
+  "fetching": false,
+  "users" : {
+    "data": []
+  }
 }

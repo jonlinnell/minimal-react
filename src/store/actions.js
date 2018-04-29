@@ -1,6 +1,7 @@
 export { sessionResume, login, logout } from './ducks/auth'
 export { addError, clearError } from './ducks/errors'
-export { loadURLs, setFilter, clearFilter } from './ducks/urls'
+export { loadURLs, setURLFilter, clearURLFilter } from './ducks/urls'
+export { loadUserList, setUserFilter, clearUserFilter } from './ducks/users'
 export { loadClicks } from './ducks/clicks'
 export { remoteAddURL, setAddingURL, clearAddingURL } from './ducks/add'
 export { setModifyURL, clearModifyURL, remoteModifyURL } from './ducks/modify'
