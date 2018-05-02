@@ -4,9 +4,9 @@ import { combineReducers } from 'redux'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
-import add from './url_add'
-import modify from './url_modify'
-import remove from './url_remove'
+import add from './urls.add'
+import modify from './urls.modify'
+import remove from './urls.remove'
 
 import { addError, setFetching, clearFetching } from '../actions'
 
