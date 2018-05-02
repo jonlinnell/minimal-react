@@ -12,9 +12,9 @@ import {
 import Links from '../ui/Links'
 
 const mapStateToProps = state => ({
-  allURLs: state.data.urls.all,
-  filter: state.data.urls.filter,
-  activeUpdate: state.activeUpdate,
+  allURLs: state.urls.data,
+  filter: state.urls.filter,
+  activeUpdate: state.urls.activeUpdate,
   fetching: state.fetching
 })
 

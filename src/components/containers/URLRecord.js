@@ -11,7 +11,7 @@ import {
 import URLRecord from '../ui/URLRecord'
 
 const mapStateToProps = state => ({
-  modify: state.activeUpdate.modify
+  modify: state.urls.activeUpdate.modify
 })
 
 const mapDispatchToProps = dispatch => ({

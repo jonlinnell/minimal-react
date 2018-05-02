@@ -4,11 +4,15 @@ import { combineReducers } from 'redux'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
+import add from './url_add'
+import modify from './url_modify'
+import remove from './url_remove'
+
 import { addError, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
-const UPDATE = 'ricochet-web/data/urls/all/UPDATE_URLS'
+const UPDATE = 'ricochet-web/data/urls/data/UPDATE_URLS'
 
 const FILTER = 'ricochet-web/data/urls/filter/FILTER'
 const CLEAR_FILTER = 'ricochet-web/data/urls/filter/CLEAR_FILTER'
@@ -17,7 +21,7 @@ export const setURLFilter = filter => ({ type: FILTER, payload: filter })
 
 export const clearURLFilter = () => ({ type: CLEAR_FILTER })
 
-const all = (state = null, action) => {
+const data = (state = null, action) => {
   switch (action.type) {
     case UPDATE:
       return action.payload
@@ -61,4 +65,12 @@ export const loadURLs = () => (dispatch) => {
     })
 }
 
-export default combineReducers({ all, filter })
+export default combineReducers({
+  activeUpdate: combineReducers({
+    add,
+    modify,
+    remove
+  }),
+  data,
+  filter
+})

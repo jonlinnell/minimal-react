@@ -11,27 +11,16 @@ import urls from './ducks/urls'
 import users from './ducks/users'
 import clicks from './ducks/clicks'
 
-import add from './ducks/add'
-import modify from './ducks/modify'
-import remove from './ducks/remove'
-
 import hamburger from './ducks/hamburger'
 
 const appReducer = combineReducers({
-  activeUpdate: combineReducers({
-    add,
-    modify,
-    remove
-  }),
   auth,
-  data: combineReducers({
-    clicks,
-    urls
-  }),
+  clicks,
   errors,
   fetching,
   form: formReducer,
   hamburger,
+  urls,
   users
 })
 

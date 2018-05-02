@@ -5,7 +5,7 @@ import { remoteModifyURL, clearModifyURL } from '../../store/actions'
 import InlineLinkForm from '../ui/InlineLinkForm'
 
 const mapStateToProps = state => ({
-  initialValues: state.data.urls.all.filter(i => i.id === state.activeUpdate.modify.id)[0]
+  initialValues: state.urls.data.filter(i => i.id === state.urls.activeUpdate.modify.id)[0]
 })
 
 const mapDispatchToProps = dispatch => ({
