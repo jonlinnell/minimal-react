@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
-import {
-  faTimes,
-  faEdit
-} from '@fortawesome/fontawesome-free-solid'
+import UserRow from '../containers/UserRow'
 
 class Users extends Component {
   componentWillMount() {
@@ -31,13 +27,7 @@ class Users extends Component {
             </thead>
             <tbody>
             {
-              users.map(user =>
-                <tr key={user.username}>
-                  <td>{user.username}</td>
-                  <td>{user.createdAt}</td>
-                  <td><FontAwesomeIcon icon={ faEdit } /></td>
-                  <td><FontAwesomeIcon icon={ faTimes } /></td>
-                </tr>)
+              users.map(user => <UserRow user={user} key={user.username} />)
             }
             </tbody>
           </table>

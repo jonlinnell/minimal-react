@@ -4,6 +4,8 @@ import { combineReducers } from 'redux'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
+import remove from './users.remove'
+
 import { addError, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
@@ -61,4 +63,10 @@ export const loadUserList = () => (dispatch) => {
     })
 }
 
-export default combineReducers({ data, filter })
+export default combineReducers({
+  activeUpdate: combineReducers({
+    remove
+  }),
+  data,
+  filter
+})

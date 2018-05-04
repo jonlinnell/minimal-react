@@ -57,7 +57,7 @@ class LinkRecord extends Component {
               className={linkActionClasses.join(' ')}
               onClick={() => this.props.onSelectDeleteURL(id)}
               data-toggle='modal'
-              data-target='#confirmDelete'
+              data-target='#confirmDeleteURL'
               role='button'
             >
               Delete

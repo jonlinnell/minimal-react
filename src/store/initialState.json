@@ -15,7 +15,16 @@
     "data": [],
     "filter": null
   },
-  "users" : {
+  "users": {
+    "activeUpdate": {
+      "add": null,
+      "modify": {
+        "id": null
+      },
+      "remove": {
+        "username": null
+      }
+    },
     "data": []
   }
 }

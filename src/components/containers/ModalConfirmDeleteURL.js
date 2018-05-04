@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import { remoteDeleteURL } from '../../store/actions'
 
-import ModalConfirmDelete from '../ui/ModalConfirmDelete'
+import ModalConfirmDeleteURL from '../ui/ModalConfirmDeleteURL'
 
 const mapStateToProps = state => ({
   url: state.urls.data.filter(url => url.id === state.urls.activeUpdate.remove.id)[0]
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirmDelete)
+export default connect(mapStateToProps, mapDispatchToProps)(ModalConfirmDeleteURL)

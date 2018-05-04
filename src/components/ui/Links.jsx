@@ -7,7 +7,7 @@ import Spinner from '../misc/Spinner'
 
 import URLRecord from '../containers/URLRecord'
 import InlineLinkFormAdd from '../containers/InlineLinkFormAdd'
-import ModalConfirmDelete from '../containers/ModalConfirmDelete'
+import ModalConfirmDeleteURL from '../containers/ModalConfirmDeleteURL'
 
 import '../../styles/Links.css'
 
@@ -53,7 +53,7 @@ class Links extends Component {
             ? <InlineLinkFormAdd />
             : null}
           {links.map(record => <URLRecord url={record} key={record.id} />)}
-          <ModalConfirmDelete />
+          <ModalConfirmDeleteURL />
         </ul>
       </div>
     )
