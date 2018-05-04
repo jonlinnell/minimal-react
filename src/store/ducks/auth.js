@@ -104,7 +104,13 @@ export const login = credentials => (dispatch) => {
       localStorage.setItem('token', response.data.token)
       dispatch(loginSuccess(credentials.username))
     })
-    .catch(error => dispatch(loginFailure(error.response.data.message)))
+    .catch((error) => {
+      if (!error) {
+        dispatch(loginFailure('Could not connect to server.'))
+      } else {
+        dispatch(loginFailure(error))
+      }
+    })
 }
 
 export const logout = () => (dispatch) => {
