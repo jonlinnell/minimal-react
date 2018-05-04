@@ -105,11 +105,7 @@ export const login = credentials => (dispatch) => {
       dispatch(loginSuccess(credentials.username))
     })
     .catch((error) => {
-      if (!error) {
-        dispatch(loginFailure('Could not connect to server.'))
-      } else {
-        dispatch(loginFailure(error))
-      }
+      dispatch(loginFailure(error))
     })
 }
 

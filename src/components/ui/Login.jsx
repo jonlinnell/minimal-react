@@ -21,7 +21,7 @@ let LoginForm = (props) => {
         <button type="submit" className="btn btn-primary btn-block px-1" disabled={pristine || submitting}>Login</button>
         {
           error
-            ? <p className='alert alert-danger mb-0 mt-3 p-2' role='alert'>{error.response ? error.response.message : 'Unable to connect to the server.'}</p>
+            ? <p className='alert alert-danger mb-0 mt-3 p-2' role='alert'>{error.response ? error.response.data.message : 'Unable to connect to the server.'}</p>
             : null
         }
       </form>
