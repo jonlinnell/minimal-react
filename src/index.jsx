@@ -15,7 +15,7 @@ import {
   loadUserList
 } from './store/actions'
 
-import App from './components/containers/App'
+import MainView from './components/MainView'
 
 const store = storeCreator()
 
@@ -32,7 +32,7 @@ if (localStorage.getItem('token')) {
 
 render(
   <Provider store={store}>
-    <App />
+    <MainView />
   </Provider>,
   document.getElementById('root')
 )
