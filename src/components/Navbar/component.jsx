@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import {
   faLink,
@@ -10,43 +10,32 @@ import {
   faSignOutAlt as faSignOut,
 } from '@fortawesome/fontawesome-free-solid'
 
-import history from '../../history'
-
 import Hamburger from '../Hamburger'
 
 import './styles.css'
 
-const checkActivePage = (page) => { // THIS DOESN'T WORK. Wrap components in HOC?
-  const baseClasses = ['nav-link']
-  if (history.location.pathname === page) {
-    return [...baseClasses, 'active'].join(' ')
-  } else {
-    return baseClasses.join(' ')
-  }
-}
-
 class Navbar extends Component {
   render() {
     const navbarItemsAuthenticated = [
-      <li className='nav-item' key='links'>
-        <Link className={checkActivePage('/links')} to='/links'>
+      <li key='links'>
+        <NavLink className='nav-link' activeClassName='nav-active' to='/links'>
           <FontAwesomeIcon icon={ faLink } className='mr-2' />
           Links
-        </Link>
+        </NavLink>
       </li>,
-      <li className='nav-item' key='statistics'>
-        <Link className={checkActivePage('/statistics')} to='/statistics'>
+      <li key='statistics'>
+        <NavLink className='nav-link' activeClassName='nav-active' to='/statistics'>
           <FontAwesomeIcon icon={ faChartLine } className='mr-2' />
           Statistics
-        </Link>
+        </NavLink>
       </li>,
-      <li className='nav-item' key='settings'>
-        <Link className={checkActivePage('/settings')} to='/settings'>
+      <li key='settings'>
+        <NavLink className='nav-link' activeClassName='nav-active' to='/settings'>
           <FontAwesomeIcon icon={ faCog } className='mr-2' />
           Settings
-        </Link>
+        </NavLink>
       </li>,
-      <li className='nav-item' key='onLogout'>
+      <li key='onLogout'>
         <a className='nav-link' href='#logout' onClick={() => this.props.onLogout(this.props.history)}>
           <FontAwesomeIcon icon={ faSignOut } className='mr-2' />
           Logout ({this.props.auth.user})
@@ -55,8 +44,8 @@ class Navbar extends Component {
     ]
 
     const navbarItemsUnauthenticated = [
-      <li className='nav-item' key='login'>
-        <Link className={checkActivePage('/login')} to='/login'>
+      <li key='login'>
+        <Link className='nav-link' to='/login'>
           <FontAwesomeIcon icon={ faSignIn } className='mr-2' />
           Login
         </Link>

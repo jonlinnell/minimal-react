@@ -9,12 +9,17 @@ nav {
   background-color: #005E82;
 }
 
-.nav-item, .nav-link {
-  color: #fff !important;
-  font-size: 0.9rem;
-}
-
 .navbar-brand {
   font-family: 'Lato', sans-serif;
   font-size: 2rem !important;
+}
+
+.nav-link {
+  color: #d3d3d3 !important;
+  font-size: 0.9rem;
+}
+
+.nav-active {
+  color: #fff !important;
+  font-size: 0.9rem;
 }
