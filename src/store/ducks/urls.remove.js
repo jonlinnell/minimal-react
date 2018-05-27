@@ -14,12 +14,12 @@ const reducer = (state = null, action) => {
   switch (action.type) {
     case CLEAR:
       return Object.assign({}, state, {
-        id: null
+        id: null,
       })
 
     case SET:
       return Object.assign({}, state, {
-        id: action.payload
+        id: action.payload,
       })
 
     default:
@@ -29,7 +29,7 @@ const reducer = (state = null, action) => {
 
 export const setDeletingURL = id => ({
   type: SET,
-  payload: id
+  payload: id,
 })
 
 export const remoteDeleteURL = id => (dispatch) => {
@@ -38,7 +38,7 @@ export const remoteDeleteURL = id => (dispatch) => {
   axios({
     method: 'DELETE',
     url: `${host}/url/${id}`,
-    headers: authHeader()
+    headers: authHeader(),
   })
     .then(() => {
       dispatch({ type: CLEAR })

@@ -30,7 +30,7 @@ let LoginForm = (props) => {
 }
 
 LoginForm = reduxForm({
-  form: 'login'
+  form: 'login',
 })(LoginForm)
 
 class Login extends Component {

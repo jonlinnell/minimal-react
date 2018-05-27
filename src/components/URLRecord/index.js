@@ -5,13 +5,13 @@ import {
   setDeletingURL,
   clearModifyURL,
   remoteModifyURL,
-  remoteDeleteURL
+  remoteDeleteURL,
 } from '../../store/actions'
 
 import URLRecord from './component'
 
 const mapStateToProps = state => ({
-  modify: state.urls.activeUpdate.modify
+  modify: state.urls.activeUpdate.modify,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => ({
 
   onDeleteURL(id) {
     dispatch(remoteDeleteURL(id))
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(URLRecord)

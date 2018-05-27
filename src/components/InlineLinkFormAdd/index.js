@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
 
   onCancel() {
     dispatch(clearAddingURL())
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(InlineLinkForm)

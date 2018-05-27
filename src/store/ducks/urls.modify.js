@@ -14,12 +14,12 @@ const reducer = (state = null, action) => {
   switch (action.type) {
     case SET:
       return Object.assign({}, state, {
-        id: action.payload
+        id: action.payload,
       })
 
     case CLEAR:
       return Object.assign({}, state, {
-        id: null
+        id: null,
       })
 
     default:
@@ -31,7 +31,7 @@ export const clearModifyURL = () => ({ type: CLEAR })
 
 export const setModifyURL = id => ({
   type: SET,
-  payload: id
+  payload: id,
 })
 
 export const remoteModifyURL = updatedUrl => (dispatch) => {
@@ -43,7 +43,7 @@ export const remoteModifyURL = updatedUrl => (dispatch) => {
     method: 'PUT',
     url: `${host}/url/${id}`,
     headers: authHeader(),
-    data: { title, url }
+    data: { title, url },
   })
     .then(() => {
       dispatch(clearFetching())

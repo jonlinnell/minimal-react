@@ -12,7 +12,7 @@ import {
   login,
   logout,
   sessionResume,
-  loadUserList
+  loadUserList,
 } from './store/actions'
 
 import MainView from './components/MainView'
@@ -34,5 +34,5 @@ render(
   <Provider store={store}>
     <MainView />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )

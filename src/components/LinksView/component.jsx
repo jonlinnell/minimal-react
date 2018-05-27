@@ -24,7 +24,7 @@ class LinksView extends Component {
       fetching,
       handleSetFilter,
       onSetAddingURL,
-      activeUpdate
+      activeUpdate,
     } = this.props
 
     let filterInput

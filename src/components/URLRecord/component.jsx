@@ -18,7 +18,7 @@ class LinkRecord extends Component {
       title,
       url,
       clicks,
-      createdAt
+      createdAt,
     } = this.props.url
 
     return this.props.modify.id === id

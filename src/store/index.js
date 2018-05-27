@@ -21,7 +21,7 @@ const appReducer = combineReducers({
   form: formReducer,
   hamburger,
   urls,
-  users
+  users,
 })
 
 export default (initialState = defaultInitialState) =>

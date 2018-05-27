@@ -14,12 +14,12 @@ const reducer = (state = null, action) => {
   switch (action.type) {
     case CLEAR:
       return Object.assign({}, state, {
-        username: null
+        username: null,
       })
 
     case SET:
       return Object.assign({}, state, {
-        username: action.payload
+        username: action.payload,
       })
 
     default:
@@ -29,7 +29,7 @@ const reducer = (state = null, action) => {
 
 export const setDeletingUser = username => ({
   type: SET,
-  payload: username
+  payload: username,
 })
 
 export const remoteDeleteUser = username => (dispatch) => {
@@ -38,7 +38,7 @@ export const remoteDeleteUser = username => (dispatch) => {
   axios({
     method: 'DELETE',
     url: `${host}/auth/user/${username}`,
-    headers: authHeader()
+    headers: authHeader(),
   })
     .then(() => {
       dispatch({ type: CLEAR })

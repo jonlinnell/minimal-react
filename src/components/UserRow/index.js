@@ -9,7 +9,7 @@ const mapStateToProps = () => {}
 const mapDispatchToProps = dispatch => ({
   onSelectDeleteUser(username) {
     dispatch(setDeletingUser(username))
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserRow)

@@ -3,7 +3,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 import {
   faTimes,
-  faEdit
+  faEdit,
 } from '@fortawesome/fontawesome-free-solid'
 
 class UserRow extends Component {

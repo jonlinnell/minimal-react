@@ -48,12 +48,12 @@ export const loadUserList = () => (dispatch) => {
   axios({
     method: 'GET',
     url: `${host}/auth/user`,
-    headers: authHeader()
+    headers: authHeader(),
   })
     .then((response) => {
       dispatch({
         type: UPDATE,
-        payload: response.data
+        payload: response.data,
       })
       dispatch(clearFetching())
     })
@@ -65,8 +65,8 @@ export const loadUserList = () => (dispatch) => {
 
 export default combineReducers({
   activeUpdate: combineReducers({
-    remove
+    remove,
   }),
   data,
-  filter
+  filter,
 })

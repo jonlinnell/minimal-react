@@ -50,12 +50,12 @@ export const loadURLs = () => (dispatch) => {
   axios({
     method: 'GET',
     url: `${host}/url`,
-    headers: authHeader()
+    headers: authHeader(),
   })
     .then((response) => {
       dispatch({
         type: UPDATE,
-        payload: response.data
+        payload: response.data,
       })
       dispatch(clearFetching())
     })
@@ -69,8 +69,8 @@ export default combineReducers({
   activeUpdate: combineReducers({
     add,
     modify,
-    remove
+    remove,
   }),
   data,
-  filter
+  filter,
 })

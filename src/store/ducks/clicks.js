@@ -25,12 +25,12 @@ export const loadClicks = () => (dispatch) => {
   axios({
     method: 'GET',
     url: `${host}/clicks`,
-    headers: authHeader()
+    headers: authHeader(),
   })
     .then((response) => {
       dispatch({
         type: UPDATE,
-        payload: response.data
+        payload: response.data,
       })
       dispatch(clearFetching())
     })

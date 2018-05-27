@@ -5,13 +5,13 @@ import { logout } from '../../store/actions'
 import Navbar from './component'
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 })
 
 const mapDispatchToProps = dispatch => ({
   onLogout() {
     dispatch(logout())
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

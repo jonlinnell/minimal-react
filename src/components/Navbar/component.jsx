@@ -7,7 +7,7 @@ import {
   faChartLine,
   faCog,
   faSignInAlt as faSignIn,
-  faSignOutAlt as faSignOut
+  faSignOutAlt as faSignOut,
 } from '@fortawesome/fontawesome-free-solid'
 
 import history from '../../history'
@@ -51,7 +51,7 @@ class Navbar extends Component {
           <FontAwesomeIcon icon={ faSignOut } className='mr-2' />
           Logout ({this.props.auth.user})
         </a>
-      </li>
+      </li>,
     ]
 
     const navbarItemsUnauthenticated = [
@@ -60,7 +60,7 @@ class Navbar extends Component {
           <FontAwesomeIcon icon={ faSignIn } className='mr-2' />
           Login
         </Link>
-      </li>
+      </li>,
     ]
 
     return (

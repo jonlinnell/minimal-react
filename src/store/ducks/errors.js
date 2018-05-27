@@ -6,7 +6,7 @@ const reducer = (state = null, action) => {
     case ADD:
       return [
         ...state,
-        action.payload
+        action.payload,
       ]
     case CLEAR:
       return state.filter((message, i) => i !== action.payload)
@@ -19,13 +19,13 @@ const reducer = (state = null, action) => {
 export const addError = message =>
   ({
     type: ADD,
-    payload: message
+    payload: message,
   })
 
 export const clearError = index =>
   ({
     type: CLEAR,
-    payload: index
+    payload: index,
   })
 
 export default reducer

@@ -6,7 +6,7 @@ import {
   setAddingURL,
   clearAddingURL,
   setURLFilter,
-  clearURLFilter
+  clearURLFilter,
 } from '../../store/actions'
 
 import LinksView from './component'
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
   allURLs: state.urls.data,
   filter: state.urls.filter,
   activeUpdate: state.urls.activeUpdate,
-  fetching: state.fetching
+  fetching: state.fetching,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
     filter === ''
       ? dispatch(clearURLFilter())
       : dispatch(setURLFilter(filter))
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinksView)

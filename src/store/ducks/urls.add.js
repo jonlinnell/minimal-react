@@ -35,7 +35,7 @@ export const remoteAddURL = newURL => (dispatch) => {
     method: 'POST',
     url: `${host}/url/`,
     headers: authHeader(),
-    data: { title, url }
+    data: { title, url },
   })
     .then(() => {
       dispatch(clearFetching())

@@ -9,7 +9,7 @@ const mapStateToProps = () => ({})
 const mapDispatchToProps = dispatch => ({
   onClearError(index) {
     dispatch(clearError(index))
-  }
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClientError)

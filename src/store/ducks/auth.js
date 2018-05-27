@@ -17,7 +17,7 @@ const SESSION_FETCHING = 'ricochet-web/auth/SESSION_FETCHING'
 
 const reducer = (state = {
   isFetching: false,
-  isAuthenticated: localStorage.getItem('token') === false
+  isAuthenticated: localStorage.getItem('token') === false,
 }, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
@@ -25,7 +25,7 @@ const reducer = (state = {
         isFetching: true,
         isAuthenticated: false,
         error: null,
-        user: action.user
+        user: action.user,
       })
 
     case LOGIN_FAILURE:
@@ -33,20 +33,20 @@ const reducer = (state = {
         isFetching: false,
         isAuthenticated: false,
         user: null,
-        error: action.error
+        error: action.error,
       })
 
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        user: action.user
+        user: action.user,
       })
 
     case SESSION_FETCHING:
       return Object.assign({}, state, {
         isFetching: true,
-        isAuthenticated: false
+        isAuthenticated: false,
       })
 
     case LOGOUT_SUCCESS:
@@ -54,7 +54,7 @@ const reducer = (state = {
         isFetching: false,
         isAuthenticated: false,
         error: null,
-        user: null
+        user: null,
       })
 
     default:
@@ -64,17 +64,17 @@ const reducer = (state = {
 
 export const loginRequest = user => ({
   type: LOGIN_REQUEST,
-  user
+  user,
 })
 
 export const loginSuccess = user => ({
   type: LOGIN_SUCCESS,
-  user
+  user,
 })
 
 export const loginFailure = error => ({
   type: LOGIN_FAILURE,
-  error
+  error,
 })
 
 export const logoutRequest = () => ({ type: LOGOUT_REQUEST })
@@ -87,7 +87,7 @@ export const sessionResume = () => (dispatch) => {
   axios({
     mathod: 'POST',
     headers: authHeader(),
-    url: `${host}/auth/me`
+    url: `${host}/auth/me`,
   })
     .then(response => dispatch(loginSuccess(response.data.username)))
     .catch(error => dispatch(loginFailure(error.response.data.message)))
@@ -98,7 +98,7 @@ export const login = credentials => (dispatch) => {
   axios({
     method: 'POST',
     url: `${host}/auth/login`,
-    data: credentials
+    data: credentials,
   })
     .then((response) => {
       localStorage.setItem('token', response.data.token)

@@ -6,7 +6,7 @@ let LinkForm = (props) => {
     pristine,
     submitting,
     handleSubmit,
-    onCancel
+    onCancel,
   } = props
 
   return (
@@ -52,7 +52,7 @@ let LinkForm = (props) => {
 }
 
 LinkForm = reduxForm({
-  form: 'link'
+  form: 'link',
 })(LinkForm)
 
 class InlineLinkForm extends Component {
