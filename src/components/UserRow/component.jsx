@@ -8,14 +8,22 @@ import {
 
 class UserRow extends Component {
   render() {
-    const { onSelectDeleteUser } = this.props
-    const { username, createdAt } = this.props.user
+    const { onSelectDeleteUser, onSetModifyUser } = this.props
+    const { username, id, createdAt } = this.props.user
 
     return (
       <tr>
         <td>{username}</td>
         <td>{createdAt}</td>
-        <td><FontAwesomeIcon icon={ faEdit } /></td>
+        <td>
+          <FontAwesomeIcon
+            icon={ faEdit }
+            onClick={() => onSetModifyUser(id)}
+            role='button'
+            data-toggle='modal'
+            data-target='#updateUserPassword'
+          />
+        </td>
         {
           username === 'admin'
           ? <td></td>

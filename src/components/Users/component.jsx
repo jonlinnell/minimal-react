@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import ModalUpdateUserPassword from '../ModalUpdateUserPassword'
 
 import UserRow from '../UserRow'
 
 class Users extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadUserList()
   }
 
@@ -32,6 +33,8 @@ class Users extends Component {
             </tbody>
           </table>
         </div>
+
+        <ModalUpdateUserPassword />
       </div>
     )
   }
