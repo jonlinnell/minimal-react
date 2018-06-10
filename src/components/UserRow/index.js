@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 
-import { setDeletingUser } from '../../store/actions'
+import { setModifyUser, clearModifyUser } from '../../store/actions'
 
 import UserRow from './component'
 
-const mapStateToProps = () => {}
-
 const mapDispatchToProps = dispatch => ({
-  onSelectDeleteUser(username) {
-    dispatch(setDeletingUser(username))
+  onSetModifyUser(id) {
+    dispatch(clearModifyUser())
+    dispatch(setModifyUser(id))
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserRow)
+export default connect(null, mapDispatchToProps)(UserRow)

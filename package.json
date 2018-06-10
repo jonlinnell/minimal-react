@@ -57,6 +57,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.6",
     "@fortawesome/react-fontawesome": "^0.0.17",
     "axios": "^0.17.1",
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.0.0",
     "bootstrap": "^4.0.0-beta.3",
     "history": "^4.7.2",

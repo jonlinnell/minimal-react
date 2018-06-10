@@ -5,6 +5,7 @@ import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
 import remove from './users.remove'
+import modify from './users.modify'
 
 import { addError, setFetching, clearFetching } from '../actions'
 
@@ -65,6 +66,7 @@ export const loadUserList = () => (dispatch) => {
 
 export default combineReducers({
   activeUpdate: combineReducers({
+    modify,
     remove,
   }),
   data,
