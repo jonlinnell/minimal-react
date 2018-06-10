@@ -17,24 +17,24 @@ class UserRow extends Component {
         <td>{createdAt}</td>
         <td>
           <FontAwesomeIcon
-            icon={ faEdit }
+            icon={faEdit}
             onClick={() => onSetModifyUser(id)}
-            role='button'
-            data-toggle='modal'
-            data-target='#updateUserPassword'
+            role="button"
+            data-toggle="modal"
+            data-target="#updateUserPassword"
           />
         </td>
         {
           username === 'admin'
-          ? <td></td>
+          ? <td />
           : <td>
-              <a
-                onClick={() => onSelectDeleteUser(username)}
-                data-toggle='modal'
-                data-target='#confirmDeleteUser'
-                role='button'
-              >
-              <FontAwesomeIcon icon={ faTimes } />
+            <a
+              onClick={() => onSelectDeleteUser(username)}
+              data-toggle="modal"
+              data-target="#confirmDeleteUser"
+              role="button"
+            >
+              <FontAwesomeIcon icon={faTimes} />
             </a>
           </td>
         }

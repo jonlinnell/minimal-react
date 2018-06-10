@@ -5,7 +5,7 @@ class ModalConfirmDelete extends Component {
     const { id, title } = this.props.url || { id: null, title: null }
 
     return (
-      <div className="modal fade" id='confirmDeleteURL' tabIndex="-1" role="dialog">
+      <div className="modal fade" id="confirmDeleteURL" tabIndex="-1" role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

@@ -9,8 +9,8 @@ const SettingsView = (props) => {
   const { fetching } = props
 
   return (
-    <div className='card-body'>
-      <h3 className='mb-3'>Settings</h3>
+    <div className="card-body">
+      <h3 className="mb-3">Settings</h3>
       <Spinner enabled={fetching} />
       <Users />
 

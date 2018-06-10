@@ -11,21 +11,21 @@ let UpdateForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Field className='form-control' component='input' type='hidden' name='id'></Field>
+      <Field className="form-control" component="input" type="hidden" name="id" />
       <div className="modal-body">
         <Field
-          className='form-control'
-          component='input'
-          type='password'
-          name='password'
-          placeholder='password'
-        ></Field>
+          className="form-control"
+          component="input"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
       </div>
       <div className="modal-footer">
         <button
           type="submit"
           className="btn btn-primary"
-          disabled={ pristine || submitting }
+          disabled={pristine || submitting}
         >
           Change
         </button>
@@ -65,7 +65,7 @@ class ModalUpdateUserPassword extends Component {
 
   render() {
     return (
-      <div className="modal fade" id='updateUserPassword' tabIndex="-1" role="dialog">
+      <div className="modal fade" id="updateUserPassword" tabIndex="-1" role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

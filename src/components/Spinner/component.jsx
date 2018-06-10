@@ -4,7 +4,7 @@ import './styles.css'
 
 const Spinner = props =>
   (props.enabled
-    ? <div className="loader"></div>
-    : <div className="blank"></div>)
+    ? <div className="loader" />
+    : <div className="blank" />)
 
 export default Spinner

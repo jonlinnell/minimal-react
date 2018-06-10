@@ -6,22 +6,22 @@ let LoginForm = (props) => {
   const { pristine, submitting, handleSubmit } = props
   const { error } = props.auth
   return (
-    <div className='col-xs-12 col-sm-8 offset-sm-2 px-4 mt-5'>
-      <h1 className='display-4'>Login</h1>
-      <p className='text-secondary mb-3'>You must log in to continue.</p>
+    <div className="col-xs-12 col-sm-8 offset-sm-2 px-4 mt-5">
+      <h1 className="display-4">Login</h1>
+      <p className="text-secondary mb-3">You must log in to continue.</p>
       <form onSubmit={handleSubmit}>
-        <div className='form-row'>
-          <div className='form-group col-sm-6'>
-            <Field className='form-control' component='input' type='text' name='username' placeholder='Username'></Field>
+        <div className="form-row">
+          <div className="form-group col-sm-6">
+            <Field className="form-control" component="input" type="text" name="username" placeholder="Username" />
           </div>
-          <div className='form-group col-sm-6'>
-            <Field className='form-control' component='input' type='password' name='password' placeholder='Password'></Field>
+          <div className="form-group col-sm-6">
+            <Field className="form-control" component="input" type="password" name="password" placeholder="Password" />
           </div>
         </div>
         <button type="submit" className="btn btn-primary btn-block px-1" disabled={pristine || submitting}>Login</button>
         {
           error
-            ? <p className='alert alert-danger mb-0 mt-3 p-2' role='alert'>{error.response ? error.response.data.message : 'Unable to connect to the server.'}</p>
+            ? <p className="alert alert-danger mb-0 mt-3 p-2" role="alert">{error.response ? error.response.data.message : 'Unable to connect to the server.'}</p>
             : null
         }
       </form>
@@ -47,7 +47,7 @@ class Login extends Component {
   render() {
     return (
       this.props.auth.isAuthenticated
-        ? <Redirect to='/' />
+        ? <Redirect to="/" />
         : <LoginForm onSubmit={this.handleSubmit} auth={this.props.auth} />
     )
   }

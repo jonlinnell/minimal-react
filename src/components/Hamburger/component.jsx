@@ -1,20 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+
+import { hamburgerPropTypes } from '../../lib/propsValidation'
 
 import './styles.css'
 
-class Hamburger extends Component {
-  render() {
-    return (
-      <div className='navbar-toggler' data-toggle='collapse' data-target='#navbar' onClick={this.props.onClick}>
-        <div id="hamburger" className={this.props.expanded ? 'open' : null}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+const Hamburger = (props) => {
+  const {
+    expanded,
+    onClick,
+  } = props
+
+  return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div className="navbar-toggler" data-toggle="collapse" data-target="#navbar" role="button" tabIndex={0} onClick={onClick}>
+      <div id="hamburger" className={expanded ? 'open' : null}>
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+Hamburger.propTypes = hamburgerPropTypes
 
 export default Hamburger

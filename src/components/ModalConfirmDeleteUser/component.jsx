@@ -5,7 +5,7 @@ class ModalConfirmDelete extends Component {
     const { username } = this.props.user || { username: null }
 
     return (
-      <div className="modal fade" id='confirmDeleteUser' tabIndex="-1" role="dialog">
+      <div className="modal fade" id="confirmDeleteUser" tabIndex="-1" role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
