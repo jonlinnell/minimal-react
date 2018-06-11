@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import {
+  inlineLinkFormDefaultProps,
   inlineLinkFormPropTypes,
-  inlineLinkFormDefaultValues,
   linkFormPropTypes,
+  linkFromDefaultProps,
 } from '../../lib/propsValidation'
 
 let LinkForm = (props) => {
@@ -88,8 +89,9 @@ class InlineLinkForm extends Component {
   }
 }
 
-InlineLinkForm.defaultProps = inlineLinkFormDefaultValues
+InlineLinkForm.defaultProps = inlineLinkFormDefaultProps
 InlineLinkForm.propTypes = inlineLinkFormPropTypes
 LinkForm.propTypes = linkFormPropTypes
+LinkForm.defaultProps = linkFromDefaultProps
 
 export default InlineLinkForm

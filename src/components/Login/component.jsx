@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 
+import { loginFormPropTypes, loginFormDefaultValues, loginPropTypes } from '../../lib/propsValidation'
+
 let LoginForm = (props) => {
   const { pristine, submitting, handleSubmit } = props
   const { error } = props.auth
@@ -52,5 +54,9 @@ class Login extends Component {
     )
   }
 }
+
+LoginForm.propTypes = loginFormPropTypes
+LoginForm.defaultValues = loginFormDefaultValues
+Login.propTypes = loginPropTypes
 
 export default Login

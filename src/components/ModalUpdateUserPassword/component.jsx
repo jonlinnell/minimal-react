@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+import {
+  updateFormPropTypes,
+  updateFormDefaultProps,
+  modalUpdateUserPasswordPropTypes,
+  modalUpdateUserPasswordDefaultProps,
+} from '../../lib/propsValidation'
+
 let UpdateForm = (props) => {
   const {
     pristine,
     submitting,
-    handleSubmit,
     onCancel,
   } = props
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <Field className="form-control" component="input" type="hidden" name="id" />
       <div className="modal-body">
         <Field
@@ -55,12 +61,12 @@ class ModalUpdateUserPassword extends Component {
     this.onCancel = this.onCancel.bind(this)
   }
 
-  handleSubmit(user) {
-    this.props.onModifyUser(user)
-  }
-
   onCancel() {
     this.props.onCancel()
+  }
+
+  handleSubmit(user) {
+    this.props.onModifyUser(user)
   }
 
   render() {
@@ -86,5 +92,10 @@ class ModalUpdateUserPassword extends Component {
     )
   }
 }
+
+UpdateForm.propTypes = updateFormPropTypes
+UpdateForm.modalUpdateUserPasswordDefaultProps = updateFormDefaultProps
+ModalUpdateUserPassword.propTypes = modalUpdateUserPasswordPropTypes
+ModalUpdateUserPassword.defaultProps = modalUpdateUserPasswordDefaultProps
 
 export default ModalUpdateUserPassword
