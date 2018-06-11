@@ -4,6 +4,10 @@ import { LinkContainer } from 'react-router-bootstrap'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faSignInAlt } from '@fortawesome/fontawesome-free-solid'
 
+import { withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
+
 import PrivateRoute from '../PrivateRoute'
 
 import ClientError from '../ClientError'
@@ -17,42 +21,58 @@ import history from '../../history'
 import { mainViewPropTypes, mainViewDefaultValues } from '../../lib/propsValidation'
 
 const DefaultHome = () => (
-  <div className="col-xs-12 col-sm-8 offset-sm-2 px-4 mt-5">
-    <h1 className="display-4 mb-3">Login</h1>
-    <p className="text-secondary">In order to view and manage links, statistics, users, and settings, you must log in.</p>
+  <div>
+    <h1>Login</h1>
+    <p>In order to view and manage links, statistics, users, and settings, you must log in.</p>
     <LinkContainer to="/login">
-      <button className="btn btn-primary">
-        <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+      <button>
+        <FontAwesomeIcon icon={faSignInAlt} />
         Login
       </button>
     </LinkContainer>
   </div>
 )
 
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+  },
+})
+
 const MainView = (props) => {
-  const { auth, errors } = props
+  const { auth, errors, classes } = props
 
   return (
     <Router history={history}>
-      <div>
-        <Navbar />
-        <div id="errors">
-          {
-            // botching a fix here. Will sort out error IDs in future.
-            errors.map((error, i) => <ClientError key={`${error.substr(12).toString('hex')}`} index={i} error={error} />)
-          }
-        </div>
-
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-sm-12 col-md-8 offset-md-2">
-              <Route exact path="/" component={auth.isAuthenticated ? null : DefaultHome} />
-              <Route path="/login" component={Login} />
-              <PrivateRoute path="/links" component={LinksView} />
-              <PrivateRoute path="/settings" component={SettingsView} />
-            </div>
+      <div className={classes.root}>
+        <Grid
+          container
+          alignItems="center"
+          direction="row"
+          justify="center"
+        >
+          <Navbar />
+          <div id="errors">
+            {
+              // botching a fix here. Will sort out error IDs in future.
+              errors.map((error, i) => <ClientError key={`${error.substr(12).toString('hex')}`} index={i} error={error} />)
+            }
           </div>
-        </div>
+
+          <Grid item xs={12} lg={4}>
+            <main>
+              <Paper className={classes.paper}>
+                <Route exact path="/" component={auth.isAuthenticated ? null : DefaultHome} />
+                <Route path="/login" component={Login} />
+                <PrivateRoute path="/links" component={LinksView} />
+                <PrivateRoute path="/settings" component={SettingsView} />
+              </Paper>
+            </main>
+          </Grid>
+        </Grid>
       </div>
     </Router>
   )
@@ -61,4 +81,4 @@ const MainView = (props) => {
 MainView.propTypes = mainViewPropTypes
 MainView.defaultValues = mainViewDefaultValues
 
-export default MainView
+export default withStyles(styles)(MainView)
