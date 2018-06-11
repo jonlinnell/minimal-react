@@ -10,10 +10,23 @@ const shapes = {
     updatedAt: propTypes.string,
     url: propTypes.string,
   },
+  activeUpdate: {
+    add: propTypes.number,
+    modify: propTypes.number,
+    delete: propTypes.number,
+  },
+  user: {
+    username: propTypes.string,
+    id: propTypes.number,
+    createdAt: propTypes.string,
+  },
 }
 
 export const clientErrorPropTypes = {
-  error: propTypes.string.isRequired,
+  error: propTypes.oneOfType([
+    propTypes.string,
+    propTypes.object,
+  ]).isRequired,
   index: propTypes.number.isRequired,
   onClearError: propTypes.func.isRequired,
 }
@@ -36,11 +49,7 @@ export const linkFromDefaultProps = {
 }
 
 export const linkViewPropTypes = {
-  activeUpdate: propTypes.shape({
-    add: propTypes.number,
-    modify: propTypes.number,
-    delete: propTypes.number,
-  }),
+  activeUpdate: propTypes.shape(shapes.activeUpdate),
   allURLs: propTypes.arrayOf(propTypes.shape(shapes.url)).isRequired,
   fetching: propTypes.bool.isRequired,
   filter: propTypes.string,
@@ -81,7 +90,7 @@ export const loginFormPropTypes = {
   handleSubmit: propTypes.func,
   auth: propTypes.shape({
     isAuthenticated: propTypes.bool,
-    error: propTypes.object,
+    error: propTypes.string,
   }),
 }
 
@@ -174,6 +183,35 @@ export const navbarDefaultProps = {
 
 export const privateRoutePropTypes = {
   component: propTypes.func.isRequired,
+}
+
+export const settingsViewPropTypes = {
+  fetching: propTypes.bool,
+}
+
+export const settingsViewDefaultProps = {
+  fetching: false,
+}
+
+export const spinnerPropTypes = {
+  enabled: propTypes.bool.isRequired,
+}
+
+export const urlRecordPropTypes = {
+  url: propTypes.shape(shapes.url),
+  onSetModifyURL: propTypes.func.isRequired,
+  onSelectDeleteURL: propTypes.func.isRequired,
+}
+
+export const userRowPropTypes = {
+  onSelectDeleteUser: propTypes.func.isRequired,
+  onSetModifyUser: propTypes.func.isRequired,
+  user: propTypes.shape(shapes.user),
+}
+
+export const userPropTypes = {
+  loadUserList: propTypes.func.isRequired,
+  users: propTypes.arrayOf(shapes.user),
 }
 
 export default null

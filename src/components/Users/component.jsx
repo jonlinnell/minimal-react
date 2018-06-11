@@ -3,6 +3,8 @@ import ModalUpdateUserPassword from '../ModalUpdateUserPassword'
 
 import UserRow from '../UserRow'
 
+import { usersPropTypes } from '../../lib/propsValidation'
+
 class Users extends Component {
   componentDidMount() {
     this.props.loadUserList()
@@ -39,5 +41,7 @@ class Users extends Component {
     )
   }
 }
+
+Users.propTypes = usersPropTypes
 
 export default Users

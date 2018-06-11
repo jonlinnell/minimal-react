@@ -37,7 +37,10 @@ const MainView = (props) => {
       <div>
         <Navbar />
         <div id="errors">
-          {errors.map((error, i) => <ClientError key={i} index={i} error={error} />)}
+          {
+            // botching a fix here. Will sort out error IDs in future.
+            errors.map((error, i) => <ClientError key={`${error.substr(12).toString('hex')}`} index={i} error={error} />)
+          }
         </div>
 
         <div className="container-fluid">
