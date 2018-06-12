@@ -36,6 +36,9 @@ const DefaultHome = () => (
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    fontFamily: theme.typography.fontFamily,
+    fontSize: theme.typography.fontSize,
+    fontWeight: theme.typography.fontWeightLight,
   },
   paper: {
     padding: theme.spacing.unit * 2,

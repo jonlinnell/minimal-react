@@ -15,10 +15,10 @@ const styles = theme => ({
     flex: 1,
   },
   navItem: {
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.common.white,
   },
   navItemActive: {
-    color: blue[50],
+    color: theme.palette.primary.contrastText,
   },
   navbar: {
     marginBottom: theme.spacing.unit * 4,

@@ -2,7 +2,17 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { Field, reduxForm } from 'redux-form'
 
+import TextField from '@material-ui/core/TextField'
+
 import { loginFormPropTypes, loginFormDefaultValues, loginPropTypes } from '../../lib/propsValidation'
+
+const renderTextField = props => (
+  <TextField
+    helperText={props.label}
+    label={props.label}
+    {...props}
+  />
+)
 
 let LoginForm = (props) => {
   const { pristine, submitting, handleSubmit } = props
@@ -14,10 +24,10 @@ let LoginForm = (props) => {
       <form onSubmit={handleSubmit}>
         <div className="form-row">
           <div className="form-group col-sm-6">
-            <Field className="form-control" component="input" type="text" name="username" placeholder="Username" />
+            <Field className="form-control" name="username" label="Username" component={renderTextField} />
           </div>
           <div className="form-group col-sm-6">
-            <Field className="form-control" component="input" type="password" name="password" placeholder="Password" />
+            <Field className="form-control" name="password" label="Password" component={renderTextField} />
           </div>
         </div>
         <button type="submit" className="btn btn-primary btn-block px-1" disabled={pristine || submitting}>Login</button>
