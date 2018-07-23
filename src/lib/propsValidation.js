@@ -178,4 +178,34 @@ export const privateRoutePropTypes = {
   component: propTypes.func.isRequired,
 }
 
+export const settingsViewPropTypes = {
+  fetching: propTypes.bool.isRequired,
+}
+
+export const spinnerPropTypes = {
+  enabled: propTypes.bool.isRequired,
+}
+
+export const linkRecordPropTypes = {
+  url: propTypes.shape(shapes.url).isRequired,
+  modify: propTypes.shape({
+    id: propTypes.number,
+  }),
+}
+
+export const userRowPropTypes = {
+  onSelectDeleteUser: propTypes.func.isRequired,
+  onSetModifyUser: propTypes.func.isRequired,
+  user: propTypes.shape({
+    username: propTypes.string.isRequired,
+    id: propTypes.number.isRequired,
+    createdAt: propTypes.string.isRequired,
+  }).isRequired,
+}
+
+export const usersPropTypes = {
+  users: propTypes.array.isRequired,
+  loadUserList: propTypes.func.isRequired,
+}
+
 export default null
