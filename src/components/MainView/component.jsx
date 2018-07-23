@@ -37,7 +37,7 @@ const MainView = (props) => {
       <div>
         <Navbar />
         <div id="errors">
-          {errors.map((error, i) => <ClientError key={i} index={i} error={error} />)}
+          {errors.map(error => <ClientError key={error.index} index={error.index} error={error} />)}
         </div>
 
         <div className="container-fluid">

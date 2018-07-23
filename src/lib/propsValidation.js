@@ -13,8 +13,10 @@ const shapes = {
 }
 
 export const clientErrorPropTypes = {
-  error: propTypes.string.isRequired,
-  index: propTypes.number.isRequired,
+  error: propTypes.shape({
+    message: propTypes.string.isRequired,
+    index: propTypes.number.isRequired,
+  }).isRequired,
   onClearError: propTypes.func.isRequired,
 }
 
