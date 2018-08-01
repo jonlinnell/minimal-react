@@ -28,15 +28,19 @@ const UserRow = (props) => {
       {
         username === 'admin'
         ? <td />
-        : <td>
-          <button
+        :
+        <td>
+          <a
             onClick={() => onSelectDeleteUser(username)}
             data-toggle="modal"
             data-target="#confirmDeleteUser"
+            role="button"
+            href="/delete"
+            tabIndex={0}
           >
             <FontAwesomeIcon icon={faTimes} />
-          </button>
-        </td> // eslint-disable-line react/jsx-closing-tag-location
+          </a>
+        </td>
       }
     </tr>
   )

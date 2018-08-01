@@ -23,11 +23,10 @@ const shapes = {
 }
 
 export const clientErrorPropTypes = {
-  error: propTypes.oneOfType([
-    propTypes.string,
-    propTypes.object,
-  ]).isRequired,
-  index: propTypes.number.isRequired,
+  error: propTypes.shape({
+    message: propTypes.string.isRequired,
+    index: propTypes.number.isRequired,
+  }).isRequired,
   onClearError: propTypes.func.isRequired,
 }
 
@@ -186,32 +185,33 @@ export const privateRoutePropTypes = {
 }
 
 export const settingsViewPropTypes = {
-  fetching: propTypes.bool,
-}
-
-export const settingsViewDefaultProps = {
-  fetching: false,
+  fetching: propTypes.bool.isRequired,
 }
 
 export const spinnerPropTypes = {
   enabled: propTypes.bool.isRequired,
 }
 
-export const urlRecordPropTypes = {
-  url: propTypes.shape(shapes.url),
-  onSetModifyURL: propTypes.func.isRequired,
-  onSelectDeleteURL: propTypes.func.isRequired,
+export const linkRecordPropTypes = {
+  url: propTypes.shape(shapes.url).isRequired,
+  modify: propTypes.shape({
+    id: propTypes.number,
+  }),
 }
 
 export const userRowPropTypes = {
   onSelectDeleteUser: propTypes.func.isRequired,
   onSetModifyUser: propTypes.func.isRequired,
-  user: propTypes.shape(shapes.user),
+  user: propTypes.shape({
+    username: propTypes.string.isRequired,
+    id: propTypes.number.isRequired,
+    createdAt: propTypes.string.isRequired,
+  }).isRequired,
 }
 
-export const userPropTypes = {
+export const usersPropTypes = {
+  users: propTypes.array.isRequired,
   loadUserList: propTypes.func.isRequired,
-  users: propTypes.arrayOf(shapes.user),
 }
 
 export default null

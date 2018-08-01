@@ -10,26 +10,24 @@ import { urlRecordPropTypes } from '../../lib/propsValidation'
 
 import './styles.scss'
 
+import { linkRecordPropTypes } from '../../lib/propsValidation'
+
 const secondaryActionClasses = ['text-secondary', 'font-weight-light']
 const linkActionClasses = [...secondaryActionClasses, 'link-action', 'ml-2']
 
-const URLRecord = (props) => {
+const LinkRecord = (props) => {
   const {
-    onSelectDeleteURL,
-    onSetModifyURL,
-  } = props
-
-  const {
-    clicks,
-    createdAt,
     id,
     title,
     url,
+    clicks,
+    createdAt,
   } = props.url
 
   return props.modify.id === id
     ? <InlineLinkFormUpdate />
-    : <li className="list-group-item">
+    :
+    <li className="list-group-item">
       <div className="row d-flex align-items-center justify-content-start">
         <p className="col-sm-4 col-xs 12 text-title m-0 p-0">{title}</p>
         <a
@@ -46,29 +44,37 @@ const URLRecord = (props) => {
           {clicks ? <span className="mr-3"><FontAwesomeIcon className="mr-0 fa-info" icon={faMousePointer} /> {clicks}</span> : null}
           <span><FontAwesomeIcon className="mr-1 fa-info" icon={faCalendar} />{formatDate(createdAt)}</span>
         </div>
-        <button
+        <a
           className={linkActionClasses.join(' ')}
-          onClick={() => onSetModifyURL(id)}
+          onClick={() => props.onSetModifyURL(id)}
+          role="button"
+          href="/modify"
+          tabIndex={0}
         >
             Modify
-        </button>
-        <button
+        </a>
+        <a
           className={linkActionClasses.join(' ')}
+          href="/stats"
+          tabIndex={-1}
         >
             Stats
-        </button>
-        <button
+        </a>
+        <a
           className={linkActionClasses.join(' ')}
-          onClick={() => onSelectDeleteURL(id)}
+          onClick={() => props.onSelectDeleteURL(id)}
           data-toggle="modal"
           data-target="#confirmDeleteURL"
+          role="button"
+          href="/delete"
+          tabIndex={-1}
         >
             Delete
-        </button>
+        </a>
       </div>
-    </li> // eslint-disable-line react/jsx-closing-tag-location
+    </li>
 }
 
-URLRecord.propTypes = urlRecordPropTypes
+LinkRecord.propTypes = linkRecordPropTypes
 
-export default URLRecord
+export default LinkRecord

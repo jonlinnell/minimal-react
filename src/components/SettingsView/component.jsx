@@ -5,7 +5,7 @@ import Users from '../Users'
 
 import ModalConfirmDeleteUser from '../ModalConfirmDeleteUser'
 
-import { settingsViewPropTypes, settingsViewDefaultProps } from '../../lib/propsValidation'
+import { settingsViewPropTypes } from '../../lib/propsValidation'
 
 const SettingsView = (props) => {
   const { fetching } = props
@@ -22,6 +22,5 @@ const SettingsView = (props) => {
 }
 
 SettingsView.propTypes = settingsViewPropTypes
-SettingsView.defaultProps = settingsViewDefaultProps
 
 export default SettingsView
