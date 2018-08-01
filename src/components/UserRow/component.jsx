@@ -17,29 +17,29 @@ const UserRow = (props) => {
       <td>{username}</td>
       <td>{createdAt}</td>
       <td>
-        <FontAwesomeIcon
-          icon={faEdit}
-          onClick={() => onSetModifyUser(id)}
-          role="button"
-          data-toggle="modal"
-          data-target="#updateUserPassword"
-        />
+        <button>
+          <FontAwesomeIcon
+            icon={faEdit}
+            onClick={() => onSetModifyUser(id)}
+            role="button"
+            data-toggle="modal"
+            data-target="#updateUserPassword"
+          />
+        </button>
       </td>
       {
         username === 'admin'
         ? <td />
         :
         <td>
-          <a
+          <button
             onClick={() => onSelectDeleteUser(username)}
             data-toggle="modal"
             data-target="#confirmDeleteUser"
-            role="button"
-            href="/delete"
             tabIndex={0}
           >
             <FontAwesomeIcon icon={faTimes} />
-          </a>
+          </button>
         </td>
       }
     </tr>
