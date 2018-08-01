@@ -10,6 +10,7 @@ import {
 
 let UpdateForm = (props) => {
   const {
+    handleSubmit,
     pristine,
     submitting,
     onCancel,
@@ -24,7 +25,7 @@ let UpdateForm = (props) => {
           component="input"
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="New password..."
         />
       </div>
       <div className="modal-footer">
@@ -32,6 +33,8 @@ let UpdateForm = (props) => {
           type="submit"
           className="btn btn-primary"
           disabled={pristine || submitting}
+          onClick={handleSubmit}
+          data-dismiss="modal"
         >
           Change
         </button>
