@@ -6,11 +6,9 @@ import InlineLinkFormUpdate from '../InlineLinkFormUpdate'
 
 import { formatDate } from '../../lib/dates'
 
-import { urlRecordPropTypes } from '../../lib/propsValidation'
+import { linkRecordPropTypes } from '../../lib/propsValidation'
 
 import './styles.scss'
-
-import { linkRecordPropTypes } from '../../lib/propsValidation'
 
 const secondaryActionClasses = ['text-secondary', 'font-weight-light']
 const linkActionClasses = [...secondaryActionClasses, 'link-action', 'ml-2']
@@ -44,33 +42,28 @@ const LinkRecord = (props) => {
           {clicks ? <span className="mr-3"><FontAwesomeIcon className="mr-0 fa-info" icon={faMousePointer} /> {clicks}</span> : null}
           <span><FontAwesomeIcon className="mr-1 fa-info" icon={faCalendar} />{formatDate(createdAt)}</span>
         </div>
-        <a
+        <button
           className={linkActionClasses.join(' ')}
           onClick={() => props.onSetModifyURL(id)}
-          role="button"
-          href="/modify"
           tabIndex={0}
         >
             Modify
-        </a>
-        <a
+        </button>
+        <button
           className={linkActionClasses.join(' ')}
-          href="/stats"
           tabIndex={-1}
         >
             Stats
-        </a>
-        <a
+        </button>
+        <button
           className={linkActionClasses.join(' ')}
           onClick={() => props.onSelectDeleteURL(id)}
           data-toggle="modal"
           data-target="#confirmDeleteURL"
-          role="button"
-          href="/delete"
           tabIndex={-1}
         >
             Delete
-        </a>
+        </button>
       </div>
     </li>
 }
