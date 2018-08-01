@@ -9,7 +9,7 @@ import {
 import { userRowPropTypes } from '../../lib/propsValidation'
 
 const UserRow = (props) => {
-  const { onSelectDeleteUser, onSetModifyUser } = props
+  const { onSetDeleteUser, onSetModifyUser } = props
   const { username, id, createdAt } = props.user
 
   return (
@@ -33,7 +33,7 @@ const UserRow = (props) => {
         :
         <td>
           <button
-            onClick={() => onSelectDeleteUser(username)}
+            onClick={() => onSetDeleteUser(username)}
             data-toggle="modal"
             data-target="#confirmDeleteUser"
             tabIndex={0}

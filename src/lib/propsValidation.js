@@ -200,7 +200,7 @@ export const linkRecordPropTypes = {
 }
 
 export const userRowPropTypes = {
-  onSelectDeleteUser: propTypes.func.isRequired,
+  onSetDeleteUser: propTypes.func.isRequired,
   onSetModifyUser: propTypes.func.isRequired,
   user: propTypes.shape({
     username: propTypes.string.isRequired,
