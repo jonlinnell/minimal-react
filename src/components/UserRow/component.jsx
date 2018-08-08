@@ -16,23 +16,21 @@ const UserRow = (props) => {
     <tr>
       <td>{username}</td>
       <td>{createdAt}</td>
-      <td>
-        <button>
-          <FontAwesomeIcon
-            icon={faEdit}
-            onClick={() => onSetModifyUser(id)}
-            role="button"
-            data-toggle="modal"
-            data-target="#updateUserPassword"
-          />
+      <td className="d-flex justify-content-end">
+        <button
+          className="btn btn-light"
+          onClick={() => onSetModifyUser(id)}
+          data-toggle="modal"
+          data-target="#updateUserPassword"
+        >
+          <FontAwesomeIcon icon={faEdit} />
         </button>
-      </td>
-      {
-        username === 'admin'
-        ? <td />
-        :
-        <td>
+        {
+          username === 'admin'
+          ? null
+          :
           <button
+            className="btn btn-light"
             onClick={() => onSetDeleteUser(username)}
             data-toggle="modal"
             data-target="#confirmDeleteUser"
@@ -40,8 +38,8 @@ const UserRow = (props) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </button>
-        </td>
-      }
+        }
+      </td>
     </tr>
   )
 }

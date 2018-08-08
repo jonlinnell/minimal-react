@@ -22,19 +22,25 @@ class Users extends Component {
           Users
         </div>
         <div className="card-body">
-          <FontAwesomeIcon
-            icon={faUserPlus}
-            role="button"
-            data-toggle="modal"
-            data-target="#CreateUser"
-          />
+          <div className="user-functions mb-3">
+            <button
+              className="btn btn-light"
+              data-toggle="modal"
+              data-target="#CreateUser"
+            >
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                className="mr-2"
+              />
+              New user
+            </button>
+          </div>
           <table className="table">
             <thead>
               <tr>
                 <th scope="col">Username</th>
                 <th scope="col">Date Created</th>
-                <th scope="col" />
-                <th scope="col" />
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
