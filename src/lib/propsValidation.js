@@ -214,4 +214,20 @@ export const usersPropTypes = {
   loadUserList: propTypes.func.isRequired,
 }
 
+export const createUserFormPropTypes = {
+  pristine: propTypes.bool,
+  submitting: propTypes.bool,
+  onCancel: propTypes.func.isRequired,
+}
+
+export const createUserFormDefaultProps = {
+  pristine: true,
+  submitting: false,
+}
+
+export const modalCreateUserDefaultProps = {
+  onCreateUser: propTypes.bool.isRequired,
+  onCancel: propTypes.bool.isRequired,
+}
+
 export default null

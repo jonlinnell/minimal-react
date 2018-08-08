@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import ModalUpdateUserPassword from '../ModalUpdateUserPassword'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { faUserPlus } from '@fortawesome/fontawesome-free-solid'
 
+import ModalUpdateUserPassword from '../ModalUpdateUserPassword'
+import ModalCreateUser from '../ModalCreateUser'
 import UserRow from '../UserRow'
 
 import { usersPropTypes } from '../../lib/propsValidation'
@@ -19,6 +22,12 @@ class Users extends Component {
           Users
         </div>
         <div className="card-body">
+          <FontAwesomeIcon
+            icon={faUserPlus}
+            role="button"
+            data-toggle="modal"
+            data-target="#CreateUser"
+          />
           <table className="table">
             <thead>
               <tr>
@@ -37,6 +46,7 @@ class Users extends Component {
         </div>
 
         <ModalUpdateUserPassword />
+        <ModalCreateUser />
       </div>
     )
   }
