@@ -1,6 +1,9 @@
 {
   "errors": [],
-  "clicks": [],
+  "clicks": {
+    "data": [],
+    "total": 0
+  },
   "fetching": false,
   "urls": {
     "activeUpdate": {
@@ -13,7 +16,8 @@
       }
     },
     "data": [],
-    "filter": null
+    "filter": null,
+    "total": 0
   },
   "users": {
     "activeUpdate": {

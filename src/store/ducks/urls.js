@@ -16,6 +16,7 @@ const UPDATE = 'ricochet-web/data/urls/data/UPDATE_URLS'
 
 const FILTER = 'ricochet-web/data/urls/filter/FILTER'
 const CLEAR_FILTER = 'ricochet-web/data/urls/filter/CLEAR_FILTER'
+const UPDATE_COUNT = 'ricochet-web/data/urls/UPDATE_COUNT'
 
 export const setURLFilter = filter => ({ type: FILTER, payload: filter })
 
@@ -44,6 +45,16 @@ const filter = (state = null, action) => {
   }
 }
 
+const total = (state = null, action) => {
+  switch (action.type) {
+    case UPDATE_COUNT:
+      return action.payload
+
+    default:
+      return state
+  }
+}
+
 export const loadURLs = () => (dispatch) => {
   dispatch(setFetching())
 
@@ -65,6 +76,19 @@ export const loadURLs = () => (dispatch) => {
     })
 }
 
+export const loadURLCount = () => (dispatch) => {
+  axios({
+    method: 'GET',
+    url: `${host}/url/count`,
+    headers: authHeader(),
+  })
+    .then(response => dispatch({
+      type: UPDATE_COUNT,
+      payload: response.data.count,
+    }))
+    .catch(error => dispatch(addError(error.response.data.message)))
+}
+
 export default combineReducers({
   activeUpdate: combineReducers({
     add,
@@ -73,4 +97,5 @@ export default combineReducers({
   }),
   data,
   filter,
+  total,
 })
