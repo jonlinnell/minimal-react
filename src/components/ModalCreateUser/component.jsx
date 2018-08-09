@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+import Modal from '../Modal'
+
 import {
   createUserFormPropTypes,
   createUserFormDefaultProps,
@@ -14,25 +16,32 @@ let CreateUserForm = (props) => {
     pristine,
     submitting,
     onCancel,
+    reset,
   } = props
 
   return (
     <form>
       <Field className="form-control" component="input" type="hidden" name="id" />
       <div className="modal-body">
-        <Field
-          className="form-control"
-          component="input"
-          name="username"
-          placeholder="Username..."
-        />
-        <Field
-          className="form-control"
-          component="input"
-          type="password"
-          name="password"
-          placeholder="Password..."
-        />
+        <div>
+          <label htmlFor="username">Username</label>
+          <Field
+            className="form-control"
+            component="input"
+            name="username"
+            placeholder="Username..."
+          />
+        </div>
+        <div className="mt-4">
+          <label htmlFor="password">Password</label>
+          <Field
+            className="form-control"
+            component="input"
+            type="password"
+            name="password"
+            placeholder="Password..."
+          />
+        </div>
       </div>
       <div className="modal-footer">
         <button
@@ -47,7 +56,7 @@ let CreateUserForm = (props) => {
         <button
           type="button"
           className="btn btn-light"
-          onClick={onCancel}
+          onClick={() => { reset(); onCancel() }}
           disabled={submitting}
           data-dismiss="modal"
         >
@@ -80,24 +89,16 @@ class ModalCreateUser extends Component {
 
   render() {
     return (
-      <div className="modal fade" id="CreateUser" tabIndex="-1" role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Create a new user</h5>
-              <button type="button" className="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-
-            <CreateUserForm
-              initialValues={this.props.initialValues}
-              onSubmit={this.handleSubmit}
-              onCancel={this.onCancel}
-            />
-          </div>
-        </div>
-      </div>
+      <Modal
+        label="Create a new user"
+        id="CreateUser"
+      >
+        <CreateUserForm
+          initialValues={this.props.initialValues}
+          onSubmit={this.handleSubmit}
+          onCancel={this.onCancel}
+        />
+      </Modal>
     )
   }
 }
