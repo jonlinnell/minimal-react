@@ -3,7 +3,7 @@ import axios from 'axios'
 import hostResolver from '../../lib/hostResolver'
 import authHeader from '../../lib/authHeader'
 
-import { addError, loadURLs, setFetching, clearFetching } from '../actions'
+import { addError, addSuccess, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
@@ -45,8 +45,9 @@ export const remoteModifyURL = updatedUrl => (dispatch) => {
     headers: authHeader(),
     data: { title, url },
   })
-    .then(() => {
+    .then((response) => {
       dispatch(clearFetching())
+      dispatch(addSuccess(`${response.data.title} modified successfully.`))
       dispatch(loadURLs())
     })
     .catch((error) => {

@@ -1,5 +1,5 @@
 export { sessionResume, login, logout } from './ducks/auth'
-export { addError, clearError } from './ducks/errors'
+export { addError, addSuccess, clearNotification } from './ducks/notifications'
 export { loadURLs, loadURLCount, setURLFilter, clearURLFilter } from './ducks/urls'
 export { loadUserList, setUserFilter, clearUserFilter } from './ducks/users'
 export { loadClicks, loadClickCount } from './ducks/clicks'

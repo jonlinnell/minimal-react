@@ -3,7 +3,7 @@ import axios from 'axios'
 import hostResolver from '../../lib/hostResolver'
 import authHeader from '../../lib/authHeader'
 
-import { addError, loadUserList, setFetching, clearFetching } from '../actions'
+import { addError, addSuccess, loadUserList, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
@@ -47,6 +47,7 @@ export const remoteModifyUser = updatedUser => (dispatch) => {
   })
     .then(() => {
       dispatch(clearFetching())
+      dispatch(addSuccess('Password changed successfully.'))
       dispatch(loadUserList())
     })
     .catch((error) => {
