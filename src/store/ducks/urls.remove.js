@@ -3,7 +3,7 @@ import axios from 'axios'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
-import { addError, loadURLs, setFetching, clearFetching } from '../actions'
+import { addError, addSuccess, loadURLs, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
@@ -43,6 +43,7 @@ export const remoteDeleteURL = id => (dispatch) => {
     .then(() => {
       dispatch({ type: CLEAR })
       dispatch(clearFetching())
+      dispatch(addSuccess('Link deleted.'))
       dispatch(loadURLs())
     })
     .catch((error) => {

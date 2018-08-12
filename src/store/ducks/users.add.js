@@ -7,47 +7,39 @@ import { addError, addSuccess, loadUserList, setFetching, clearFetching } from '
 
 const host = hostResolver()
 
-const SET = 'ricochet-web/users/activeUpdate/modify/SET'
-const CLEAR = 'ricochet-web/users/activeUpdate/modify/CLEAR'
+const SET = 'ricochet-web/activeUpdate/addUser/SET'
+const CLEAR = 'ricochet-web/activeUpdate/addUser/CLEAR'
 
 const reducer = (state = null, action) => {
   switch (action.type) {
     case SET:
-      return Object.assign({}, state, {
-        id: action.payload,
-      })
+      return true
 
     case CLEAR:
-      return Object.assign({}, state, {
-        id: null,
-      })
+      return false
 
     default:
       return state
   }
 }
 
-export const clearModifyUser = () => ({ type: CLEAR })
+export const setCreatingUser = () => ({ type: SET })
+export const clearCreatingUser = () => ({ type: CLEAR })
 
-export const setModifyUser = id => ({
-  type: SET,
-  payload: id,
-})
-
-export const remoteModifyUser = updatedUser => (dispatch) => {
-  const { id, password } = updatedUser
+export const remoteCreateUser = newUser => (dispatch) => {
+  const { username, password } = newUser
 
   dispatch(setFetching())
 
   axios({
-    method: 'PUT',
-    url: `${host}/auth/user/${id}/password`,
+    method: 'POST',
+    url: `${host}/auth/register`,
     headers: authHeader(),
-    data: { password },
+    data: { username, password },
   })
-    .then(() => {
+    .then((response) => {
       dispatch(clearFetching())
-      dispatch(addSuccess('Password changed successfully.'))
+      dispatch(addSuccess(`New user ${response.data.username} added successfully.`))
       dispatch(loadUserList())
     })
     .catch((error) => {

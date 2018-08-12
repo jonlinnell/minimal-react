@@ -1,5 +1,10 @@
+/* eslint-disable react/prop-types */
+/* prop-types disabled in this file as the renderField component doesn't work yet */
+
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+
+import Modal from '../Modal'
 
 import {
   updateFormPropTypes,
@@ -8,11 +13,39 @@ import {
   modalUpdateUserPasswordDefaultProps,
 } from '../../lib/propsValidation'
 
+const validate = (values) => {
+  const errors = {}
+
+  if (values.password !== values.confirmPassword) {
+    errors.confirmPassword = 'Passwords do not match'
+  }
+
+  return errors
+}
+
+const renderField = ({
+  input,
+  label,
+  type,
+  name,
+  meta: { touched, error },
+}) => (
+  <div>
+    <label htmlFor={name}>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} className="form-control" />
+      <p className="text-danger">{touched && (error && <span>{error}</span>)}</p>
+    </div>
+  </div>
+)
+
 let UpdateForm = (props) => {
   const {
+    handleSubmit,
     pristine,
     submitting,
     onCancel,
+    reset,
   } = props
 
   return (
@@ -20,11 +53,16 @@ let UpdateForm = (props) => {
       <Field className="form-control" component="input" type="hidden" name="id" />
       <div className="modal-body">
         <Field
-          className="form-control"
-          component="input"
+          component={renderField}
           type="password"
           name="password"
-          placeholder="password"
+          label="New password..."
+        />
+        <Field
+          component={renderField}
+          type="password"
+          name="confirmPassword"
+          label="Confirm password..."
         />
       </div>
       <div className="modal-footer">
@@ -32,13 +70,15 @@ let UpdateForm = (props) => {
           type="submit"
           className="btn btn-primary"
           disabled={pristine || submitting}
+          data-dismiss="modal"
+          onClick={handleSubmit}
         >
           Change
         </button>
         <button
           type="button"
           className="btn btn-light"
-          onClick={onCancel}
+          onClick={() => { reset(); onCancel() }}
           disabled={submitting}
           data-dismiss="modal"
         >
@@ -51,6 +91,7 @@ let UpdateForm = (props) => {
 
 UpdateForm = reduxForm({
   form: 'passwordUpdate',
+  validate,
 })(UpdateForm)
 
 class ModalUpdateUserPassword extends Component {
@@ -71,24 +112,13 @@ class ModalUpdateUserPassword extends Component {
 
   render() {
     return (
-      <div className="modal fade" id="updateUserPassword" tabIndex="-1" role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Change Password</h5>
-              <button type="button" className="close" data-dismiss="modal">
-                <span>&times;</span>
-              </button>
-            </div>
-
-            <UpdateForm
-              initialValues={this.props.initialValues}
-              onSubmit={this.handleSubmit}
-              onCancel={this.onCancel}
-            />
-          </div>
-        </div>
-      </div>
+      <Modal id="updateUserPassword" label="Change Password">
+        <UpdateForm
+          initialValues={this.props.initialValues}
+          onSubmit={this.handleSubmit}
+          onCancel={this.onCancel}
+        />
+      </Modal>
     )
   }
 }

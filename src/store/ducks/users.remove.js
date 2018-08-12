@@ -3,7 +3,7 @@ import axios from 'axios'
 import authHeader from '../../lib/authHeader'
 import hostResolver from '../../lib/hostResolver'
 
-import { addError, loadUserList, setFetching, clearFetching } from '../actions'
+import { addError, addSuccess, loadUserList, setFetching, clearFetching } from '../actions'
 
 const host = hostResolver()
 
@@ -43,6 +43,7 @@ export const remoteDeleteUser = username => (dispatch) => {
     .then(() => {
       dispatch({ type: CLEAR })
       dispatch(clearFetching())
+      dispatch(addSuccess('User deleted.'))
       dispatch(loadUserList())
     })
     .catch((error) => {

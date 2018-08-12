@@ -57,7 +57,11 @@ const Navbar = (props) => {
     <div className="container-fluid p-0">
       <div className="w-100 nav-bg">
         <nav className="navbar navbar-expand-lg align-items-center navbar-dark col-sm-12 col-md-8 offset-md-2">
-          <span className="navbar-brand">Ricochet</span>
+          <span>
+            <Link className="navbar-brand" href="/" to="/">
+              Ricochet
+            </Link>
+          </span>
           <Hamburger />
           <div className="collapse navbar-collapse" id="navbar">
             <ul className="navbar-nav justify-content-end ml-auto" role="group" aria-label="Navigation">

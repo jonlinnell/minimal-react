@@ -12,8 +12,6 @@ import {
   login,
   logout,
   sessionResume,
-  loadUserList,
-  remoteModifyUser,
 } from './store/actions'
 
 import MainView from './components/MainView'
@@ -24,8 +22,6 @@ if (process.env.NODE_ENV === 'development') {
   window.store = store
   window.login = login
   window.logout = logout
-  window.loadUserList = loadUserList
-  window.remoteModifyUser = remoteModifyUser
 }
 
 if (localStorage.getItem('token')) {

@@ -200,7 +200,7 @@ export const linkRecordPropTypes = {
 }
 
 export const userRowPropTypes = {
-  onSelectDeleteUser: propTypes.func.isRequired,
+  onSetDeleteUser: propTypes.func.isRequired,
   onSetModifyUser: propTypes.func.isRequired,
   user: propTypes.shape({
     username: propTypes.string.isRequired,
@@ -212,6 +212,22 @@ export const userRowPropTypes = {
 export const usersPropTypes = {
   users: propTypes.array.isRequired,
   loadUserList: propTypes.func.isRequired,
+}
+
+export const createUserFormPropTypes = {
+  pristine: propTypes.bool,
+  submitting: propTypes.bool,
+  onCancel: propTypes.func.isRequired,
+}
+
+export const createUserFormDefaultProps = {
+  pristine: true,
+  submitting: false,
+}
+
+export const modalCreateUserDefaultProps = {
+  onCreateUser: propTypes.bool.isRequired,
+  onCancel: propTypes.bool.isRequired,
 }
 
 export default null
