@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/fontawesome-free-solid'
 
+import posed, { PoseGroup } from 'react-pose'
+
 import Spinner from '../Spinner'
 
 import URLRecord from '../URLRecord'
@@ -12,6 +14,16 @@ import ModalConfirmDeleteURL from '../ModalConfirmDeleteURL'
 import { linksViewPropTypes, linksViewDefaultProps } from '../../lib/propsValidation.js'
 
 import './styles.css'
+
+const URLRecordAnimationWrapper = posed.div({
+  enter: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 200 },
+  },
+})
 
 class LinksView extends Component {
   componentWillMount() {
@@ -54,7 +66,15 @@ class LinksView extends Component {
           {activeUpdate.add
             ? <InlineLinkFormAdd />
             : null}
-          {links.map(record => <URLRecord url={record} key={record.id} />)}
+          <PoseGroup>
+            {
+              links.map(record => (
+                <URLRecordAnimationWrapper key={record.id}>
+                  <URLRecord url={record} />
+                </URLRecordAnimationWrapper>
+              ))
+            }
+          </PoseGroup>
           <ModalConfirmDeleteURL />
         </ul>
       </div>

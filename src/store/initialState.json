@@ -1,16 +1,5 @@
 {
-  "notifications": [
-    {
-      "index": 1,
-      "message": "This is a success message!",
-      "type": "SUCCESS"
-    },
-    {
-      "index": 2,
-      "message": "This is an error message :(",
-      "type": "ERROR"
-    }
-  ],
+  "notifications": [],
   "clicks": {
     "data": [],
     "total": 0
